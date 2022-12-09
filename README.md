@@ -1,11 +1,12 @@
-# Drone
 # cloning laravel project from github
-# Clone your project
-# Go to the folder application using cd command on your cmd or terminal
-# Run composer install on your cmd or terminal
-# Copy .env.example file to .env on the root folder. You can type copy .env.example .env if using command prompt Windows or cp .env.example .env if using terminal, Ubuntu
-# Open your .env file and change the database name (DB_DATABASE) to whatever you have, username (DB_USERNAME) and password (DB_PASSWORD) field correspond to your configuration.
-# Run php artisan key:generate
-# Run php artisan migrate
-# Run php artisan serve
-# Go to http://localhost:8000/
+<ul>
+<li>Clone your project</li>
+<li>Go to the folder application using <code>cd</code> command on your cmd or terminal</li>
+<li>Run <code>composer install</code> on your cmd or terminal</li>
+<li>Copy <code>.env.example</code> file to <code>.env</code> on the root folder. You can type <code>copy .env.example .env</code> if using command prompt Windows or <code>cp .env.example .env</code> if using terminal, Ubuntu</li>
+<li>Open your <code>.env</code> file and change the database name (<code>DB_DATABASE</code>) to whatever you have, username (<code>DB_USERNAME</code>) and password (<code>DB_PASSWORD</code>) field correspond to your configuration.</li>
+<li>Run <code>php artisan key:generate</code></li>
+<li>Run <code>php artisan migrate</code></li>
+<li>Run <code>php artisan serve</code></li>
+<li>Go to http://localhost:8000/</li>
+</ul>
