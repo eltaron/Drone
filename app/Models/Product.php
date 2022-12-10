@@ -17,6 +17,7 @@ class Product extends Model
         'special',
         'status',
         'code',
+        'category_id'
     ];
     protected $appends = [
         'time_ago'
@@ -57,4 +58,8 @@ class Product extends Model
         return $this->hasMany('App\Models\Like', 'product_id');
     }
 
+    public function category()
+    {
+        return $this->belongsTo('App\Models\Category','category_id');
+    }
 }

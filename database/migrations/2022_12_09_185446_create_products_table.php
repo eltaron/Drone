@@ -23,6 +23,7 @@ return new class extends Migration
             $table->tinyInteger('special')->default(0);
             $table->tinyInteger('status')->default(0);
             $table->string('code');
+            $table->bigInteger('category_id')->unsigned();
             $table->timestamps();
         });
     }
