@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models\Models;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -17,13 +17,14 @@ class Point extends Model
         'description_en',
     ];
 
-    protected $appends = ['description','time_ago'];
+    protected $appends = ['description', 'time_ago'];
     protected $hidden = [
         'description_ar',
         'description_en',
     ];
 
-    public function getTimeAgoAttribute(){
+    public function getTimeAgoAttribute()
+    {
         return $this->created_at->diffForHumans();
     }
     public function getDescriptionAttribute()
@@ -37,6 +38,6 @@ class Point extends Model
 
     public function user()
     {
-        return $this->belongsTo('App\Models\User','user_id');
+        return $this->belongsTo('App\Models\User', 'user_id');
     }
 }

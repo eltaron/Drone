@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models\Models;
+namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -50,26 +50,26 @@ class User extends Authenticatable
     ];
     public function store()
     {
-        return $this->hasOne('App\Models\Store','user_id');
+        return $this->hasOne('App\Models\Shop', 'user_id');
     }
 
     public function articles()
     {
-        return $this->hasMany('App\Models\Article','user_id');
+        return $this->hasMany('App\Models\Article', 'user_id');
     }
 
     public function city()
     {
-        return $this->belongsTo('App\Models\City','city_id');
+        return $this->belongsTo('App\Models\City', 'city_id');
     }
 
     public function carts()
     {
-        return $this->hasMany('App\Models\Cart','user_id');
+        return $this->hasMany('App\Models\Cart', 'user_id');
     }
 
     public function wishlists()
     {
-        return $this->hasMany('App\Models\Wishlist','user_id');
+        return $this->hasMany('App\Models\Wishlist', 'user_id');
     }
 }

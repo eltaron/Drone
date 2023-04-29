@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models\Models;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -18,7 +18,7 @@ class Country extends Model
         'language'
     ];
 
-    protected $appends = ['name','currency'];
+    protected $appends = ['name', 'currency'];
     protected $hidden = [
         'name_ar',
         'name_en',
@@ -44,7 +44,8 @@ class Country extends Model
         }
     }
 
-    public function cities() {
-        return $this->hasMany('App\Models\City','country_id');
+    public function cities()
+    {
+        return $this->hasMany('App\Models\City', 'country_id');
     }
 }

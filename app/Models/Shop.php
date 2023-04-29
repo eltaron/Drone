@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models\Models;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -24,7 +24,8 @@ class Shop extends Model
         'time_ago'
     ];
 
-    public function getTimeAgoAttribute(){
+    public function getTimeAgoAttribute()
+    {
         return $this->created_at->diffForHumans();
     }
     public function user()
@@ -34,6 +35,6 @@ class Shop extends Model
 
     public function products()
     {
-        return $this->hasMany('App\Models\Product','user_id');
+        return $this->hasMany('App\Models\Product', 'user_id');
     }
 }

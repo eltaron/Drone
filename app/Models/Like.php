@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models\Models;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -10,8 +10,8 @@ class Like extends Model
     use HasFactory;
     protected $fillable = [
         'user_id',
-        'product_id',
-        'article_id',
+        'model_id',
+        'model',
         'type',
     ];
 
@@ -24,7 +24,8 @@ class Like extends Model
         'time_ago'
     ];
 
-    public function getTimeAgoAttribute(){
+    public function getTimeAgoAttribute()
+    {
         return $this->created_at->diffForHumans();
     }
 

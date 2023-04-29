@@ -5,18 +5,17 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class OrderProduct extends Model
+class DeliveryOrder extends Model
 {
     use HasFactory;
     protected $fillable = [
         'order_id',
-        'product_id',
-        'quantity',
+        'delivery_id',
     ];
 
-    public function product()
+    public function delivery()
     {
-        return $this->belongsTo('App\Models\Product', 'product_id');
+        return $this->belongsTo('App\Models\Delivery', 'delivery_id');
     }
 
     public function order()

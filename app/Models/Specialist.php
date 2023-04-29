@@ -2,31 +2,35 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Wishlist extends Model
+class Specialist extends Model
+
 {
-    use HasFactory;
     protected $fillable = [
-        'user_id',
-        'product_id'
+        'product_id',
+        'status',
+        'end_at',
     ];
+
+    protected $hidden = [
+        'end_at',
+        'created_at',
+        'updated_at',
+    ];
+
     protected $appends = [
         'time_ago'
     ];
 
     public function getTimeAgoAttribute()
     {
-        return $this->created_at->diffForHumans();
+        $date = \Carbon\Carbon::parse($this->end_at);
+        return $date->diffForHumans();
     }
+
     public function product()
     {
         return $this->belongsTo('App\Models\Product', 'product_id');
-    }
-
-    public function user()
-    {
-        return $this->belongsTo('App\Models\User', 'user_id');
     }
 }

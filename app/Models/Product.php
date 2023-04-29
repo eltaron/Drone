@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models\Models;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -14,7 +14,6 @@ class Product extends Model
         'price',
         'description',
         'seen',
-        'special',
         'status',
         'code',
         'category_id'
@@ -23,7 +22,8 @@ class Product extends Model
         'time_ago'
     ];
 
-    public function getTimeAgoAttribute(){
+    public function getTimeAgoAttribute()
+    {
         return $this->created_at->diffForHumans();
     }
     public function images()
@@ -39,12 +39,12 @@ class Product extends Model
 
     public function shop()
     {
-        return $this->belongsTo('App\Models\Shop','shop_id');
+        return $this->belongsTo('App\Models\Shop', 'shop_id');
     }
 
     public function offer()
     {
-        return $this->hasOne('App\Models\Offer','product_id');
+        return $this->hasOne('App\Models\Offer', 'product_id');
     }
 
 
@@ -60,6 +60,6 @@ class Product extends Model
 
     public function category()
     {
-        return $this->belongsTo('App\Models\Category','category_id');
+        return $this->belongsTo('App\Models\Category', 'category_id');
     }
 }

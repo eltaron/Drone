@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models\Models;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -15,13 +15,16 @@ class Article extends Model
         'seen',
         'special',
         'status',
+        'tags',
+        'category_id',
     ];
 
     protected $appends = [
         'time_ago'
     ];
 
-    public function getTimeAgoAttribute(){
+    public function getTimeAgoAttribute()
+    {
         return $this->created_at->diffForHumans();
     }
 
@@ -38,7 +41,7 @@ class Article extends Model
 
     public function user()
     {
-        return $this->belongsTo('App\Models\User','user_id');
+        return $this->belongsTo('App\Models\User', 'user_id');
     }
 
     public function comments()
@@ -49,5 +52,10 @@ class Article extends Model
     public function likes()
     {
         return $this->hasMany('App\Models\Like', 'article_id');
+    }
+
+    public function category()
+    {
+        return $this->belongsTo('App\Models\Category');
     }
 }

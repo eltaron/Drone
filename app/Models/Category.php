@@ -15,6 +15,7 @@ class Category extends Model
         'icon',
         'keywords',
         'description',
+        'parent_id'
     ];
 
     protected $appends = ['name'];
@@ -26,14 +27,20 @@ class Category extends Model
     {
         if (lang() == 'ar') {
             return $this->attributes['name_ar'];
-        } elseif(request()->header('lang') == 'ar') {
+        } elseif (request()->header('lang') == 'ar') {
             return $this->attributes['name_ar'];
-        }else{
+        } else {
             return $this->attributes['name_en'];
         }
     }
 
-    public function products() {
-        return $this->hasMany('App\Models\Product','category_id');
+    public function products()
+    {
+        return $this->hasMany('App\Models\Product', 'category_id');
+    }
+
+    public function children()
+    {
+        return $this->hasMany('App\Models\Category', 'parent_id');
     }
 }

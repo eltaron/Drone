@@ -5,17 +5,17 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Image extends Model
+class Post extends Model
 {
     use HasFactory;
     protected $fillable = [
+        'title',
+        'description',
+        'allow_comment',
+        'type',
         'user_id',
-        'model_id',
-        'model',
-        'filename',
-        'url',
+        'category_id',
     ];
-
     protected $hidden = [
         'created_at',
         'updated_at',
@@ -29,18 +29,20 @@ class Image extends Model
     {
         return $this->created_at->diffForHumans();
     }
-
     public function user()
     {
-        return $this->belongsTo('App\Models\User', 'user_id');
+        return $this->belongsTo('App\Models\User');
     }
-
-    public function product()
+    public function category()
     {
-        return $this->belongsTo('App\Models\Product', 'product_id');
+        return $this->belongsTo('App\Models\Category');
     }
-    public function article()
+    public function comments()
     {
-        return $this->belongsTo('App\Models\Article', 'article_id');
+        return $this->hasMany('App\Models\Comment')->where('status', 1);
+    }
+    public function image()
+    {
+        return $this->hasOne('App\Models\Image');
     }
 }

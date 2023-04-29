@@ -5,22 +5,21 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Image extends Model
+class Delivery extends Model
 {
     use HasFactory;
     protected $fillable = [
         'user_id',
-        'model_id',
-        'model',
-        'filename',
-        'url',
+        'delivery_name',
+        'delivery_Code',
+        'logo',
+        'address',
+        'facebook',
+        'twitter',
+        'instagram',
+        'youtube',
+        'google',
     ];
-
-    protected $hidden = [
-        'created_at',
-        'updated_at',
-    ];
-
     protected $appends = [
         'time_ago'
     ];
@@ -29,18 +28,13 @@ class Image extends Model
     {
         return $this->created_at->diffForHumans();
     }
-
     public function user()
     {
         return $this->belongsTo('App\Models\User', 'user_id');
     }
 
-    public function product()
+    public function orders()
     {
-        return $this->belongsTo('App\Models\Product', 'product_id');
-    }
-    public function article()
-    {
-        return $this->belongsTo('App\Models\Article', 'article_id');
+        return $this->hasMany('App\Models\DeliveryOrder', 'user_id');
     }
 }
