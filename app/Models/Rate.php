@@ -13,25 +13,7 @@ class Rate extends Model
         'model_id',
         'model',
         'rate',
-        'operation',
-        'description_ar',
-        'description_en',
     ];
-
-    protected $appends = ['description'];
-    protected $hidden = [
-        'description_ar',
-        'description_en',
-    ];
-
-    public function getDescriptionAttribute()
-    {
-        if (lang() == 'ar') {
-            return $this->attributes['description_ar'];
-        } else {
-            return $this->attributes['description_en'];
-        }
-    }
 
     public function user()
     {

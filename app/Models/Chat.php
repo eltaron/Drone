@@ -10,7 +10,7 @@ class Chat extends Model
     use HasFactory;
     protected $fillable = [
         'user_id',
-        'store_id',
+        'shop_id',
         'delivery_id',
         'status',
     ];
@@ -33,9 +33,9 @@ class Chat extends Model
     {
         return $this->belongsTo('App\Models\User', 'user_id');
     }
-    public function store()
+    public function shop()
     {
-        return $this->belongsTo('App\Models\Store', 'store_id');
+        return $this->belongsTo('App\Models\Shop', 'shop_id');
     }
     public function delivery()
     {

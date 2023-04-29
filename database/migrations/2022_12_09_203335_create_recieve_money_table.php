@@ -20,7 +20,8 @@ return new class extends Migration
             $table->text('comment')->nullable();
             $table->text('description_ar')->nullable();
             $table->text('description_en')->nullable();
-            $table->enum('status',['accepted','not accepted','under review'])->default('under review');
+            $table->enum('status', ['accepted', 'not accepted', 'under review'])->default('under review');
+            $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();
         });
     }

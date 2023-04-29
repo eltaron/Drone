@@ -13,11 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('cities', function (Blueprint $table) {
+        Schema::create('currencies', function (Blueprint $table) {
             $table->id();
-            $table->string('name_en');
-            $table->string('name_ar');
-            $table->bigInteger('country_id')->unsigned();
+            $table->string('name_ar')->nullable();
+            $table->string('name_en')->nullable();
+            $table->tinyInteger('is_default')->default(0);
+            $table->string('code')->nullable();
             $table->timestamps();
         });
     }
@@ -29,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('cities');
+        Schema::dropIfExists('currencies');
     }
 };

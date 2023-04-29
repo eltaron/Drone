@@ -16,9 +16,12 @@ return new class extends Migration
         Schema::create('chat_messages', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('chat_id')->unsigned();
-            $table->text('content');
-            $table->string('image');
-            $table->string('record');
+            $table->text('content')->nullable();
+            $table->string('image')->nullable();
+            $table->string('record')->nullable();
+            $table->string('video')->nullable();
+            $table->string('file')->nullable();
+            $table->foreign('chat_id')->references('id')->on('chats')->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();
         });
     }

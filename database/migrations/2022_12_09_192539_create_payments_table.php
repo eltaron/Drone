@@ -29,8 +29,10 @@ return new class extends Migration
             $table->double('paid_currency_value');
             $table->string('card_number');
             $table->tinyInteger('is_success');
-            $table->enum('operation',['charge','purchase']);
+            $table->enum('operation', ['charge', 'purchase']);
             $table->bigInteger('order_id')->unsigned();
+            $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreign('order_id')->references('id')->on('orders')->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();
         });
     }

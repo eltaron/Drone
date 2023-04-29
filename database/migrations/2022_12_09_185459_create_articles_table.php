@@ -17,10 +17,14 @@ return new class extends Migration
             $table->id();
             $table->bigInteger('user_id')->unsigned();
             $table->string('title');
-            $table->text('description');
+            $table->text('description')->nullable();
+            $table->text('tags')->nullable();
             $table->integer('seen')->default(0);
             $table->tinyInteger('special')->default(0);
             $table->tinyInteger('status')->default(0);
+            $table->bigInteger('category_id')->unsigned();
+            $table->foreign('category_id')->references('id')->on('categories')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();
         });
     }

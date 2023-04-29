@@ -16,9 +16,10 @@ return new class extends Migration
         Schema::create('likes', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('user_id')->unsigned();
-            $table->bigInteger('product_id')->unsigned()->nullable();
-            $table->bigInteger('article_id')->unsigned()->nullable();
-            $table->enum('type',['like','dislike','love','haha']);
+            $table->bigInteger('model_id')->unsigned();
+            $table->string('model');
+            $table->enum('type', ['like', 'dislike', 'love', 'haha']);
+            $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();
         });
     }

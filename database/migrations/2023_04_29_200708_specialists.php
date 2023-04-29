@@ -13,12 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('discount_coupons', function (Blueprint $table) {
+        Schema::create('specialists', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('user_id')->unsigned();
-            $table->string('code');
-            $table->integer('percent');
+            $table->bigInteger('product_id')->unsigned();
             $table->dateTime('end_at');
+            $table->foreign('product_id')->references('id')->on('products')->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -30,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('discount_coupons');
+        Schema::dropIfExists('specialists');
     }
 };

@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('model');
             $table->bigInteger('model_id');
             $table->dateTime('read_at')->nullable();
+            $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();
         });
     }

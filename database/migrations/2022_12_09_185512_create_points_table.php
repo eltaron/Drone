@@ -17,10 +17,11 @@ return new class extends Migration
             $table->id();
             $table->bigInteger('user_id')->unsigned();
             $table->integer('grand_total');
-            $table->integer('points');
+            $table->integer('points')->default(0);
             $table->string('operation');
             $table->string('description_ar')->nullable();
             $table->string('description_en')->nullable();
+            $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();
         });
     }

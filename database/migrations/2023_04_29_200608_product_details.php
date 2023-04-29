@@ -13,15 +13,19 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('carts', function (Blueprint $table) {
+        Schema::create('product_details', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('product_id')->unsigned();
-            $table->bigInteger('user_id')->unsigned();
-            $table->integer('quantity')->default(1);
-            $table->integer('price');
-            $table->timestamps();
-            $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
+            $table->string('video')->nullable();
+            $table->integer('quantity');
+            $table->string('weight')->nullable();
+            $table->double('shipping_price', 8, 2)->nullable();
+            $table->enum('payment', ['when recieving', 'bank transfer']);
+            $table->tinyInteger('whatsapp');
+            $table->text('keywords')->nullable();
+            $table->text('hidden_data')->nullable();
             $table->foreign('product_id')->references('id')->on('products')->onUpdate('cascade')->onDelete('cascade');
+            $table->timestamps();
         });
     }
 
@@ -32,6 +36,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('carts');
+        Schema::dropIfExists('product_details');
     }
 };

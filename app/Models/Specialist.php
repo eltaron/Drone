@@ -9,7 +9,6 @@ class Specialist extends Model
 {
     protected $fillable = [
         'product_id',
-        'status',
         'end_at',
     ];
 

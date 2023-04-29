@@ -13,14 +13,15 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('addresses', function (Blueprint $table) {
+        Schema::create('posts', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('user_id')->unsigned();
-            $table->bigInteger('city_id')->unsigned();
-            $table->string('district')->nullable();
-            $table->string('street')->nullable();
-            $table->bigInteger('floor_no')->nullable();
-            $table->string('land_mark')->nullable();
+            $table->bigInteger('category_id')->unsigned();
+            $table->string('title');
+            $table->text('description');
+            $table->integer('seen')->default(0);
+            $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreign('category_id')->references('id')->on('categories')->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -32,6 +33,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('addresses');
+        Schema::dropIfExists('posts');
     }
 };

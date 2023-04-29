@@ -16,10 +16,10 @@ return new class extends Migration
         Schema::create('rates', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('user_id')->unsigned();
+            $table->bigInteger('model_id')->unsigned();
             $table->tinyInteger('rate');
-            $table->string('operation');
-            $table->string('description_ar')->nullable();
-            $table->string('description_en')->nullable();
+            $table->string('model');
+            $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();
         });
     }

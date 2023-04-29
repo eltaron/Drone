@@ -18,6 +18,7 @@ return new class extends Migration
             $table->bigInteger('product_id')->unsigned();
             $table->double('price');
             $table->dateTime('end_at');
+            $table->foreign('product_id')->references('id')->on('products')->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();
         });
     }

@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('operation');
             $table->string('description_ar');
             $table->string('description_en');
+            $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();
         });
     }

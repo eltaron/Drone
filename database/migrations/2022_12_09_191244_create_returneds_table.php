@@ -20,6 +20,8 @@ return new class extends Migration
             $table->string('status')->default('under review');
             $table->text('description')->nullable();
             $table->text('reason')->nullable();
+            $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreign('order_id')->references('id')->on('orders')->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();
         });
     }
