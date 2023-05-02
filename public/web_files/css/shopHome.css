@@ -1,0 +1,98 @@
+
+
+body {
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+}
+
+/* pre-Header */
+
+.pre-header {
+  background-color: var(--sec-color);
+  height: 30px;
+}
+
+.pre-header ul a {
+  font-size: 14px;
+  color: var(--white);
+}
+
+/* Header */
+
+header {
+  background-color: var(--main-color);
+}
+
+.fa-magnifying-glass,
+.fa-heart,
+.fa-circle-user {
+  color: var(--white);
+}
+
+.cart {
+  background-color: var(--sec-color);
+  color: var(--white);
+  border: none;
+}
+
+/* Main */
+.title{
+  color: var(--main-color);
+  letter-spacing: 4px;
+}
+.quote{
+  color: var(--sec-color);
+}
+
+/* Main Card */
+
+.main-card1{
+  background-color: var(--main-color) !important;
+  border: 10px solid var(--sec-color);
+  width: 100%;
+  background-image: url("../images/tProducts.png") , url(../images/grass.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-position-y: 80%  , 100%;
+}
+
+.main-card2{
+  background-color: var(--main-color) !important;
+  border: 10px solid var(--sec-color);
+  width: 100%;
+  background-image: url("../images/offers.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position-y: 220%;
+  background-blend-mode: hard-light;
+}
+@media (max-width: 1200px) {
+  .main-card2{
+    background-position-y: 106%;
+  }
+}
+
+/* pagination */
+.page-link{
+  color: var(--sec-color);
+}
+.disabled .page-link{
+  color: var(--main-color);
+}
+.carousel-indicators [data-bs-target]{
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  background-color: #3d5656;
+  opacity: 1;
+}
+.carousel-indicators .active{
+  background-color: #68b984;
+}
+.carousel-control-next-icon,.carousel-control-prev-icon{
+  background-color: #3d5656;
+  padding: 25px 31px;
+}

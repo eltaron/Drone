@@ -1,0 +1,6 @@
+@include('trader.includes.head')
+@include('trader.includes.messages')
+@include('trader.includes.navbar')
+@include('trader.includes.header')
+@yield('content')
+@include('trader.includes.footer')

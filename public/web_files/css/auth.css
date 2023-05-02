@@ -1,0 +1,108 @@
+:root {
+  --main-color: #68B984;
+  --sec-color: #3D5656;
+  --third-color: #CFFDE1;
+  --fourth-color: #FED049;
+  --white: #ffffff;
+  --black: #000000;
+}
+
+@font-face {
+  font-family: "college";
+  src: url('../webfonts/college.ttf') format("truetype");
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "college", sans-serif
+}
+
+html {
+  scroll-behavior: smooth;
+  height: 100vh !important;
+}
+
+body{
+  background-color: var(--main-color);
+  color: var(--white);
+}
+
+a{
+  text-decoration: none;
+}
+.row{
+  margin: 0;
+  padding: 0;
+}
+.list{
+  border-bottom: 5px solid white;
+}
+.container ul a{
+  color: var(--white);
+  font-size: 1.75rem;
+  text-align: center;
+}
+#reg_head li button{
+  background-color: transparent;
+  color: #fff;
+  font-size: 26px;
+  margin: 4px 0;
+  padding: 13px 0;
+  border: 0;
+}
+.login:hover , .reg:hover,
+.login:focus,#reg_head li:hover button,#reg_head li button.active,
+.reg:focus,
+.login.active,
+.reg.active,
+.user:active,
+.trader:active,
+.delivery:active,.mainbutton,.mainli{
+  background-color: var(--white) !important;
+  color: var(--main-color) !important;
+}
+
+.log-head span{
+  font-size: 3.25rem;
+  color: var(--main-color);
+  background-color: var(--white);
+  padding-inline: 90px !important;
+  border-bottom: 5px solid white;
+}
+.mainbutton{
+  display: block;
+  border: 0;
+  margin: 30px auto 0;
+  padding: 10px 60px;
+  font-size: 30px;
+}
+.maininput{
+  outline: 0;
+  border: 0;
+  background-color: transparent;
+  display: block;
+  border-bottom: 2px solid #fff;
+  color: #fff;
+  margin: 8px auto;
+  padding: 8px 0;
+  font-size: 24px;
+  width: 100%;
+}
+#log-head .maininput{
+  width: 75%;
+}
+@media  (max-width: 992px) {
+  #log-head .maininput{
+    width: 100%;
+  }
+}
+.maininput::placeholder { 
+  color: #fff;
+}
+.mainli{
+  margin: 4px 0;
+  padding: 13px 0;
+}
+.row div{padding: 0;}
