@@ -1,13 +1,18 @@
 <?php
 
-namespace App\Http\Controllers\Shop;
+namespace App\Http\Controllers\Store;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
-    public function index(){
-        return view('shop.home.index');
+    public function index()
+    {
+        return view('store.home.index');
+    }
+    public function show()
+    {
+        return view('store.details.index');
     }
 }
