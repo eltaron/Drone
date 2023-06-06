@@ -9,7 +9,7 @@
 
 @font-face {
   font-family: "college";
-  src: url('../webfonts/college.ttf') format("truetype");
+  src: url('http://localhost/CurrentWorkLaravel/Drone/webfonts/college.ttf') format("truetype");
 }
 
 * {
@@ -63,7 +63,9 @@ a{
   background-color: var(--white) !important;
   color: var(--main-color) !important;
 }
-
+option{
+    color: var(--main-color);
+}
 .log-head span{
   font-size: 3.25rem;
   color: var(--main-color);
@@ -98,7 +100,7 @@ a{
     width: 100%;
   }
 }
-.maininput::placeholder { 
+.maininput::placeholder {
   color: #fff;
 }
 .mainli{

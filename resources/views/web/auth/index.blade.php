@@ -51,36 +51,48 @@
                 <div class="col-2"></div>
                 <div class="col-12 col-lg-8 p-0">
                     <form action="" method="post">
-                    <div class="row">
-                        <div class="col-md-6 pe-0 pe-md-2">
-                        <input class="maininput" type="text" placeholder="USER NAME"/>
+                        @csrf
+                        <div class="row">
+                            <div class="col-md-12 pe-0 pe-md-2">
+                            <input class="maininput" name="username" type="text" placeholder="USER NAME"/>
+                            </div>
                         </div>
-                        <div class="col-md-6 ps-0 ps-md-2">
-                        <input class="maininput" type="text" placeholder="E_MAIL"/>
+                        <div class="row">
+                            <div class="col-md-6 pe-0 pe-md-2">
+                            <input class="maininput" name="phone" type="text" placeholder="PHONE NAME"/>
+                            </div>
+                            <div class="col-md-6 ps-0 ps-md-2">
+                            <input class="maininput" type="email" name="email" placeholder="E_MAIL"/>
+                            </div>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-4 pe-0 pe-md-2">
-                        <input class="maininput" type="text" placeholder="PHONE NAME"/>
+                        <div class="row">
+                            <div class="col-md-6 pe-0 pe-md-2">
+                                <input class="maininput" type="password" name="password" placeholder="PASSWORD"/>
+                                </div>
+                            <div class="col-md-6 ps-0 ps-md-2">
+                                <input class="maininput" type="password" name="rpassword" placeholder="reset PASSWORD"/>
+                            </div>
                         </div>
-                        <div class="col-md-4 ps-0 ps-md-2 pe-0 pe-md-2">
-                        <input class="maininput" type="text" placeholder="CITY" />
+                        <div class="row">
+                            <div class="col-md-6 pe-0 pe-md-2">
+                                <select class="maininput" id="country" aria-label="Default select example">
+                                    <option disabled selected>Choose Country</option>
+                                    @foreach (countries() as $country)
+                                        <option value="{{ $country->id }}">
+                                            {{ $country->name }}
+                                        </option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="col-md-6 ps-0 ps-md-2">
+                                <select class="maininput" name="city" id="city">
+                                    <option disabled selected>Choose City</option>
+                                </select>
+                            </div>
                         </div>
-                        <div class="col-md-4 ps-0 ps-md-2">
-                        <input class="maininput" type="text" placeholder="PASSWORD"/>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6 pe-0 pe-md-2">
-                        <input class="maininput" type="text" placeholder="ADDRESS 1"/>
-                        </div>
-                        <div class="col-md-6 ps-0 ps-md-2">
-                        <input class="maininput" type="text" placeholder="ADDRESS 2"/>
-                        </div>
-                    </div>
-                    <button class="mainbutton mb-4" type="submit">
-                        REGISTER
-                    </button>
+                        <button class="mainbutton mb-4" type="submit">
+                            REGISTER
+                        </button>
                     </form>
                 </div>
                 </div>
@@ -189,4 +201,36 @@
             </div>
         </div>
     </div>
+    @push('scripts')
+        <script src="{{asset('web_files')}}/js/jquery.js"></script>
+        <script>
+            $(document).ready(function() {
+                $('#country').change(function() {
+                    var countryID = $(this).val();
+                    $.ajax({
+                        type: 'POST',
+                        url: "{{ url('/cities') }}",
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        },
+                        data: {
+                            _token: "{{ csrf_token() }}",
+                            'country_id': countryID,
+                        },
+                        beforeSend: function() {
+                            $('#city').empty();
+                            $('#number').empty();
+                        },
+                        success: function(msg) {
+                            for (var i = 0; i <= msg.cities.length; i++) {
+                                $('#city').append("<option value='" + msg.cities[i].id + "'>" + msg
+                                    .cities[i].name + "</option>");
+                            }
+                        }
+                    });
+                });
+            });
+
+        </script>
+    @endpush
 @endsection

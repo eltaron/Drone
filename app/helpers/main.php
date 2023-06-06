@@ -114,7 +114,12 @@ if (!function_exists('userTrader')) {
         return \App\Models\User::where('id', \Auth::user()->id)->with('store')->first();
     }
 }
-
+if (!function_exists('countries')) {
+    function countries()
+    {
+        return \App\Models\Country::get();
+    }
+}
 if (!function_exists('storeNameData')) {
     function storeNameData()
     {
