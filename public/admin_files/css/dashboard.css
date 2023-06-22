@@ -228,7 +228,9 @@ select::-moz-focus-inner,
 input[type="file"]>input[type="button"]::-moz-focus-inner {
     outline: 0;
 }
-
+button{
+    cursor: pointer;
+}
 .ui-slider-handle:focus,
 .navbar-toggle,
 input:focus {
@@ -326,7 +328,7 @@ input:focus {
 
 .documentation .wrapper {
     margin-top: -61px;
-    height: 100vh;
+    /* height: 100vh; */
 }
 
 .documentation .navbar {
@@ -815,11 +817,11 @@ body>.navbar-collapse[data-color="purple"]:after {
     right: -15px;
 }
 
-.modal.show .modal-dialog {
+/* .modal.show .modal-dialog {
     -webkit-transform: translate(0, 30%);
     -o-transform: translate(0, 30%);
     transform: translate(0, 30%);
-}
+} */
 
 .modal.modal-mini .modal-dialog {
     max-width: 255px;
@@ -1673,12 +1675,12 @@ fieldset[disabled] .btn-neutral.active {
     border-right: 0 none;
 }
 
-.input-group .form-control:last-child,
+/* .input-group .form-control:last-child,
 .input-group-addon:last-child,
 .input-group-btn:last-child>.dropdown-toggle,
 .input-group-btn:first-child>.btn:not(:first-child) {
     border-left: 0 none;
-}
+} */
 
 .form-control[disabled],
 .form-control[readonly],
@@ -1751,7 +1753,7 @@ fieldset[disabled] .form-control {
 
 .alert button.close {
     position: absolute;
-    right: 10px;
+    right: 30px;
     top: 50%;
     margin-top: -13px;
     z-index: 1033;
@@ -1766,6 +1768,7 @@ fieldset[disabled] .form-control {
     text-align: center;
     padding: 3px;
     font-weight: 300;
+    color: #000000;
 }
 
 .alert button.close:hover {
@@ -2968,7 +2971,7 @@ Copyright (c) 2015 Daniel Eden
     text-transform: uppercase;
 }
 
-.card .card-title {
+.card-title {
     margin: 0;
     color: var(--sec-color)
 }

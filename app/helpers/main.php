@@ -90,7 +90,12 @@ if (!function_exists('turl')) {
         return url('/trader/' . $url);
     }
 }
-
+if (!function_exists('durl')) {
+    function durl($url)
+    {
+        return url('/delivery/' . $url);
+    }
+}
 if (!function_exists('surl')) {
     function surl($url)
     {
@@ -133,7 +138,7 @@ if (!function_exists('storeNameData')) {
 if (!function_exists('categories')) {
     function categories()
     {
-        return \App\Models\Category::with('children')->where('parent_id', null)->where('id', '!=', 145)->get();
+        return \App\Models\Category::with('children')->where('parent_id', 0)->get();
     }
 }
 

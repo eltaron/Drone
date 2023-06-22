@@ -22,18 +22,28 @@ class Product extends Model
         'time_ago'
     ];
 
+    public function getCurrencyAttribute()
+    {
+        $store = Shop::where('id', $this->shop_id)->first();
+        $user = User::where('id', $store->user_id)->with('city.country')->first();
+        if ($user->city()->exists()) {
+            return $user->city->country->currency;
+        }
+        return "";
+    }
+
     public function getTimeAgoAttribute()
     {
         return $this->created_at->diffForHumans();
     }
     public function images()
     {
-        return $this->hasMany('App\Models\Image', 'product_id');
+        return $this->hasMany('App\Models\Image', 'model_id');
     }
 
     public function image()
     {
-        return $this->hasOne('App\Models\Image', 'product_id');
+        return $this->hasOne('App\Models\Image', 'model_id');
     }
 
 

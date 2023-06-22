@@ -21,7 +21,11 @@ Route::group(['middleware' => 'Lang'], function () {
             return redirect(url('home'));
         });
         Route::get('home', 'HomeController@index');
+        Route::get('language/{lang}', 'HomeController@language');
         Route::get('auth', 'AuthController@index');
+        Route::post('register', 'AuthController@register');
+        Route::post('login', 'AuthController@login');
+        Route::get('logout', 'AuthController@logout');
         Route::get('articles', 'ArticlesController@index');
         Route::get('articleDetails/{id}', 'ArticlesController@show');
         Route::get('posts', 'PostsController@index');

@@ -174,4 +174,34 @@
             </div>
         </div>
     </div>
+@push('scripts')
+    <!-- Control Center for Dashboard: scripts for the example pages etc -->
+    <script src="{{asset('admin_files')}}/js/dashboard.js " type="text/javascript"></script>
+    <!-- Dashboard  -->
+    <script src="{{asset('admin_files')}}/js/demo.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            // Javascript method's body can be found in assets/js/demos.js
+            demo.initDashboardPageCharts();
+
+        });
+        $(document).ready(function () {
+
+            $('.counter').each(function () {
+                $(this).prop('Counter', 0).animate({
+                    Counter: $(this).text()
+                }, {
+                    duration: 5000,
+                    easing: 'swing',
+                    step: function (now) {
+                        $(this).text(Math.ceil(now));
+                    }
+                });
+            });
+
+        });
+    </script>
+    <!--  Chartist Plugin  -->
+    <script src="{{asset('admin_files')}}/js/plugins/chartist.min.js"></script>
+@endpush
 @endsection

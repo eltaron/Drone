@@ -11,12 +11,12 @@
             <div class="collapse navbar-collapse justify-content-end" id="navigation">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="{{url('web_files')}}">
-                            <span class="no-icon">Account</span>
+                        <a class="nav-link" href="{{surl('')}}">
+                            <span class="no-icon">My shop</span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{url('web_files')}}">
+                        <a class="nav-link" href="{{url('logout')}}">
                             <span class="no-icon">Log out</span>
                         </a>
                     </li>

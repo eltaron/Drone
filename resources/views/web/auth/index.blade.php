@@ -27,154 +27,89 @@
         <div class="row">
             <div class="col-2"></div>
             <div class="col-lg-8 col-12 list p-0">
-            <ul class="d-flex justify-content-center align-items-center list-unstyled m-0">
-                <li class="col user">
-                <button class="w-100 h-100" onclick="showm('showuser')">
-                    User
-                </button>
-                </li>
-                <li class="col trader">
-                <button class="w-100 h-100" onclick="showm('showtrader')">
-                    Trader
-                </button>
-                </li>
-                <li class="col delivery">
-                <button class="w-100 h-100" onclick="showm('showdelivery')">
-                    Delivery
-                </button>
-                </li>
+            <ul class="text-center p-0 m-0">
+                <li class="fs-5 mainli"><h2>Get started with CropCopter</h2></li>
             </ul>
             </div>
             <div class="col-lg-12 p-0">
-            <div class="d-block" id="showuser">
-                <div class="row">
-                <div class="col-2"></div>
-                <div class="col-12 col-lg-8 p-0">
-                    <form action="" method="post">
-                        @csrf
-                        <div class="row">
-                            <div class="col-md-12 pe-0 pe-md-2">
-                            <input class="maininput" name="username" type="text" placeholder="USER NAME"/>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6 pe-0 pe-md-2">
-                            <input class="maininput" name="phone" type="text" placeholder="PHONE NAME"/>
-                            </div>
-                            <div class="col-md-6 ps-0 ps-md-2">
-                            <input class="maininput" type="email" name="email" placeholder="E_MAIL"/>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6 pe-0 pe-md-2">
-                                <input class="maininput" type="password" name="password" placeholder="PASSWORD"/>
+                <div class="d-block" id="showuser">
+                    <div class="row">
+                        <div class="col-2"></div>
+                        <div class="col-12 col-lg-8 p-0">
+                            <form action="{{url('register')}}" method="post" autocomplete="off">
+                                @csrf
+                                <div class="col-md-12">
+                                    <select class="maininput" name="type"  required>
+                                        <option disabled selected>Choose Account type</option>
+                                        <option value="user">user</option>
+                                        <option value="trader">vendor</option>
+                                        <option value="delivery">delivery</option>
+                                    </select>
                                 </div>
-                            <div class="col-md-6 ps-0 ps-md-2">
-                                <input class="maininput" type="password" name="rpassword" placeholder="reset PASSWORD"/>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6 pe-0 pe-md-2">
-                                <select class="maininput" id="country" aria-label="Default select example">
-                                    <option disabled selected>Choose Country</option>
-                                    @foreach (countries() as $country)
-                                        <option value="{{ $country->id }}">
-                                            {{ $country->name }}
-                                        </option>
-                                    @endforeach
-                                </select>
-                            </div>
-                            <div class="col-md-6 ps-0 ps-md-2">
-                                <select class="maininput" name="city" id="city">
-                                    <option disabled selected>Choose City</option>
-                                </select>
-                            </div>
-                        </div>
-                        <button class="mainbutton mb-4" type="submit">
-                            REGISTER
-                        </button>
-                    </form>
-                </div>
-                </div>
-            </div>
-            <div class="d-none" id="showtrader">
-                <div class="row">
-                <div class="col-2"></div>
-                <div class="col-12 col-lg-8 p-0">
-                    <form action="" method="post">
-                    <div class="row">
-                        <div class="col-md-6 pe-0 pe-md-2">
-                        <input class="maininput" type="text" placeholder="COMPANY NAME"/>
-                        </div>
-                        <div class="col-md-6 ps-0 ps-md-2">
-                        <input class="maininput" type="text" placeholder="E_MAIL"/>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-4 pe-0 pe-md-2">
-                        <input class="maininput" type="text" placeholder="PHONE NAME"/>
-                        </div>
-                        <div class="col-md-4 ps-0 ps-md-2 pe-0 pe-md-2">
-                        <input class="maininput" type="text" placeholder="CITY" />
-                        </div>
-                        <div class="col-md-4 ps-0 ps-md-2">
-                        <input class="maininput" type="text" placeholder="PASSWORD"/>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6 pe-0 pe-md-2">
-                        <input class="maininput" type="text" placeholder="ADDRESS 1"/>
-                        </div>
-                        <div class="col-md-6 ps-0 ps-md-2">
-                        <input class="maininput" type="text" placeholder="ADDRESS 2"/>
-                        </div>
-                    </div>
-                    <button class="mainbutton mb-4" type="submit">
-                        REGISTER
-                    </button>
-                    </form>
-                </div>
-                </div>
-            </div>
-            <div class="d-none" id="showdelivery">
-                <div class="row">
-                <div class="col-2"></div>
-                <div class="col-12 col-lg-8 p-0">
-                    <form action="" method="post">
-                    <div class="row">
-                        <div class="col-md-6 pe-0 pe-md-2">
-                        <input class="maininput" type="text" placeholder="COMPANY NAME"/>
-                        </div>
-                        <div class="col-md-6 ps-0 ps-md-2">
-                        <input class="maininput" type="text" placeholder="E_MAIL"/>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                    <input class="maininput" name="username" required type="text" placeholder="USER NAME"/>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6 pe-0 pe-md-2">
+                                    <input class="maininput" name="mobile" required type="text" placeholder="PHONE number"/>
+                                    </div>
+                                    <div class="col-md-6 ps-0 ps-md-2">
+                                    <input class="maininput" type="email" name="email" placeholder="E_MAIL"/>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <input class="maininput" id="myPass" oninput="textChange()" type="password" name="password" required placeholder="PASSWORD" autocomplete="new-password"/>
+                                        <div class="validator">
+                                            <p id="capital">
+                                                <i class="fas fa-times"></i>
+                                                <i class="fas fa-check"></i>
+                                                <span>Upper Case</span>
+                                            </p>
+                                            <p id="special-char">
+                                                <i class="fas fa-times"></i>
+                                                <i class="fas fa-check"></i>
+                                                <span>Special Character</span>
+                                            </p>
+                                            <p id="number">
+                                                <i class="fas fa-times"></i>
+                                                <i class="fas fa-check"></i>
+                                                <span>Number</span>
+                                            </p>
+                                            <p id="more-than-8">
+                                                <i class="fas fa-times"></i>
+                                                <i class="fas fa-check"></i>
+                                                <span> &gt; 8 characters</span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6 pe-0 pe-md-2">
+                                        <select class="maininput" id="country" aria-label="Default select example" >
+                                            <option disabled selected>Choose Country</option>
+                                            @foreach (countries() as $country)
+                                                <option value="{{ $country->id }}">
+                                                    {{ $country->name }}
+                                                </option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                    <div class="col-md-6 ps-0 ps-md-2">
+                                        <select class="maininput" name="city" id="city" required>
+                                            <option disabled selected>Choose City</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <button class="mainbutton mb-4" type="submit">
+                                    REGISTER
+                                </button>
+                            </form>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-md-4 pe-0 pe-md-2">
-                        <input class="maininput" type="text" placeholder="PHONE NAME"/>
-                        </div>
-                        <div class="col-md-4 ps-0 ps-md-2 pe-0 pe-md-2">
-                        <input class="maininput" type="text" placeholder="CITY" />
-                        </div>
-                        <div class="col-md-4 ps-0 ps-md-2">
-                        <input class="maininput" type="text" placeholder="PASSWORD"/>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6 pe-0 pe-md-2">
-                        <input class="maininput" type="text" placeholder="ADDRESS 1"/>
-                        </div>
-                        <div class="col-md-6 ps-0 ps-md-2">
-                        <input class="maininput" type="text" placeholder="ADDRESS 2"/>
-                        </div>
-                    </div>
-                    <button class="mainbutton mb-4" type="submit">
-                        REGISTER
-                    </button>
-                    </form>
                 </div>
-                </div>
-            </div>
             </div>
         </div>
     </div>
@@ -191,9 +126,11 @@
             <div class="row">
                 <div class="col-2"></div>
                 <div class="col-lg-8 col-12">
-                <form action="" method="post">
-                    <input class="maininput" type="text" placeholder="E-MAIL" />
-                    <input class="maininput" type="text" placeholder="PASSWORD" />
+                @include('web.includes.messages')
+                <form action="{{url('login')}}" method="post" autocomplete="off">
+                    @csrf
+                    <input class="maininput" name="mobile" autocomplete="mobile" required type="tel" placeholder="Phone" />
+                    <input class="maininput" name="password" required type="password" placeholder="PASSWORD" autocomplete="new-password"/>
                     <button class="mainbutton" type="submit">Login</button>
                 </form>
                 </div>
@@ -202,7 +139,6 @@
         </div>
     </div>
     @push('scripts')
-        <script src="{{asset('web_files')}}/js/jquery.js"></script>
         <script>
             $(document).ready(function() {
                 $('#country').change(function() {

@@ -11,7 +11,6 @@
         <link rel="stylesheet" href="{{asset('web_files')}}/vendor/FontAwesome/css/all.min.css" />
         <!-- Stylesheet -->
         <link rel="stylesheet" href="{{asset('web_files')}}/css/main.css" />
-        <title></title>
         @stack('styles')
     </head>
 
