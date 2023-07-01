@@ -21,37 +21,42 @@ class ProfileController extends Controller
         if (Auth::user()->type == 'trader') {
             $validate = $request->validate([
                 'store_name'    => 'required',
-                'logo'          => 'required',
+                'logo'          => 'nullable',
                 'address'       => 'nullable',
+                'google'        => 'nullable',
                 'facebook'      => 'nullable',
                 'twitter'       => 'nullable',
                 'instagram'     => 'nullable',
                 'username'      => 'required',
                 'mobile'        => 'required',
                 'email'         => 'nullable',
-                'city'          => 'required',
+                'city'          => 'nullable',
                 'about'         => 'nullable',
             ]);
             $user = User::find(Auth::user()->id);
             $user->name     = $request->username;
             $user->mobile   = $request->mobile;
             $user->email    = $request->email;
-            $user->city_id  = $request->city;
+            if ($request->city_id) {
+                $user->city_id  = $request->city;
+            }
             $user->about    = $request->about;
             $user->save();
             $store = Shop::where('user_id', Auth::user()->id)->first();
             $store->store_name = $request->store_name;
 
             $file = $request->file('logo');
-            $fileNameWithExtension = $file->getClientOriginalName();
-            $fileName = pathinfo($fileNameWithExtension, PATHINFO_FILENAME);
-            $extension = $file->getClientOriginalExtension();
-            $imageName = $fileName . '_' . time() . '.' . $extension;
-            $mainpath = date("Y-m-d") . '/';
-            $path = $file->move(public_path('storage/stores/' . $mainpath), $imageName);
-            $store->logo = url('') . '/storage/stores/' . $mainpath . $imageName;
-
+            if ($file) {
+                $fileNameWithExtension = $file->getClientOriginalName();
+                $fileName = pathinfo($fileNameWithExtension, PATHINFO_FILENAME);
+                $extension = $file->getClientOriginalExtension();
+                $imageName = $fileName . '_' . time() . '.' . $extension;
+                $mainpath = date("Y-m-d") . '/';
+                $path = $file->move(public_path('storage/stores/' . $mainpath), $imageName);
+                $store->logo = url('') . '/storage/stores/' . $mainpath . $imageName;
+            }
             $store->address = $request->address;
+            $store->google = $request->google;
             $store->facebook = $request->facebook;
             $store->twitter = $request->twitter;
             $store->instagram = $request->instagram;

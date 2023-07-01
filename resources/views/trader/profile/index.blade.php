@@ -27,7 +27,7 @@
                                 <div class="col-md-12">
                                     <div class="input-group mb-3" style="flex-wrap: wrap;">
                                         <label class="w-100">Store Logo</label>
-                                        <input type="file" name="logo" class="form-control w-100" required>
+                                        <input type="file" name="logo" class="form-control w-100">
                                     </div>
                                 </div>
                             </div>
@@ -36,6 +36,14 @@
                                     <div class="form-group">
                                         <label>Store Address</label>
                                         <textarea class="form-control" name="address" placeholder="Store Address" rows="5" style="height: auto">{{Auth::user()->store->address}}</textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label>Google Map Location</label>
+                                        <textarea class="form-control" name="google" placeholder="Google Map Location" rows="5" style="height: auto">{{Auth::user()->store->google}}</textarea>
                                     </div>
                                 </div>
                             </div>

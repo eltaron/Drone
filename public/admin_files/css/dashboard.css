@@ -354,9 +354,9 @@ body>.navbar-collapse {
 .sidebar .sidebar-wrapper,
 body>.navbar-collapse .sidebar-wrapper {
     position: relative;
-    max-height: calc(100vh - 75px);
+    /* max-height: calc(100vh - 75px); */
     min-height: 100%;
-    overflow: hidden;
+    /* overflow: hidden; */
     width: 260px;
     z-index: 4;
     padding-bottom: 85px;

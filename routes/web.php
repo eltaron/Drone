@@ -30,8 +30,6 @@ Route::group(['middleware' => 'Lang'], function () {
         Route::get('articleDetails/{id}', 'ArticlesController@show');
         Route::get('posts', 'PostsController@index');
         Route::get('allProducts', 'ProductsController@all');
-        Route::get('shop', 'ProductsController@index');
-        Route::get('productDetails/{id}', 'ProductsController@show');
         Route::post('cities', 'AuthController@cities');
     });
 });

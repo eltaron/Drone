@@ -128,7 +128,7 @@ if (!function_exists('countries')) {
 if (!function_exists('storeNameData')) {
     function storeNameData()
     {
-        $path = explode('/', request()->path())[0];
+        $path = explode('/', request()->path())[1];
         return \App\Models\User::whereHas('store', function ($query) use ($path) {
             $query->where('store_name', $path);
         })->with('store')->first();

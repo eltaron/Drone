@@ -57,6 +57,10 @@ class Product extends Model
         return $this->hasOne('App\Models\Offer', 'product_id');
     }
 
+    public function specialist()
+    {
+        return $this->hasOne('App\Models\Specialist', 'product_id');
+    }
 
     public function comments()
     {
