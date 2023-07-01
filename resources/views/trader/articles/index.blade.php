@@ -47,14 +47,14 @@
                 <div class="modal-body">
                     @csrf
                     <div>
-                        <label>Article Name</label>
+                        <label>Article Title</label>
                         <input name="title" class="form-control" required placeholder="Enter Product Name"/>
                     </div>
                     <div>
                         <label>
                         <span>Article Description</span>
                         </label>
-                        <textarea name="description" class="form-control" cols="30" rows="8" style="height: auto" placeholder="Enter Product Description"></textarea>
+                        <textarea name="description" required class="form-control" cols="30" rows="8" style="height: auto" placeholder="Enter Product Description"></textarea>
                     </div>
                     <div>
                         <label>
@@ -69,16 +69,18 @@
                     </div>
                     <div>
                         <label>
-                        <span>Price</span>
+                        <span>Article Images</span><i>(add image or more)</i>
                         </label>
-                        <input type="number" required name="price" class="form-control" placeholder="Enter Price"/>
+                        <div>
+                        <input type="file" required class="form-control" name="images[]" id="" multiple>
+                        </div>
                     </div>
                     <div>
                         <label>
-                        <span>tags</span><i>(separate with ',')</i>
+                        <span>Tags</span><i>(separate with ',')</i>
                         </label>
                         <div>
-                            <input type="number" name="oprice" class="form-control" placeholder="Enter Offer Price"/>
+                            <input type="text" name="tags" class="form-control" placeholder="separate with ','"/>
                         </div>
                     </div>
                 </div>
