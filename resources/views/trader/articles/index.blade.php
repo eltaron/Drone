@@ -15,7 +15,7 @@
         @foreach ($articles as $article)
             <section class="postcard light">
                 <a class=" d-md-flex" href="#">
-                    <img class="postcard__img" src="{{asset('admin_files')}}/img/1.jpg" alt="Image Title" />
+                    <img class="postcard__img" src="{{$article->image->url}}" alt="Image Title" />
                 </a>
                 <div class="postcard__text t-dark d-flex justify-content-start">
                     <h1 class="postcard__title"><a href="#">Article Title</a></h1>
@@ -47,20 +47,20 @@
                 <div class="modal-body">
                     @csrf
                     <div>
-                        <label>Article Title</label>
-                        <input name="title" class="form-control" required placeholder="Enter Article Title"/>
+                        <label>Article Name</label>
+                        <input name="title" class="form-control" required placeholder="Enter Product Name"/>
                     </div>
                     <div>
                         <label>
                         <span>Article Description</span>
                         </label>
-                        <textarea name="description" required class="form-control" cols="30" rows="8" style="height: auto" placeholder="Enter Article Description"></textarea>
+                        <textarea name="description" class="form-control" cols="30" rows="8" style="height: auto" placeholder="Enter Product Description"></textarea>
                     </div>
                     <div>
                         <label>
                         <span>Article Category</span>
                         </label>
-                        <select name="category_id" required class="form-control" id="">
+                        <select name="category_id" class="form-control" id="">
                             <option disabled selected>Choose category</option>
                             @foreach (categories() as $item)
                                 <option value="{{$item->id}}">{{$item->name_en}}</option>
@@ -69,17 +69,17 @@
                     </div>
                     <div>
                         <label>
-                        <span>Article Images</span><i>(add image or more)</i>
+                        <span>Price</span>
                         </label>
-                        <div>
-                        <input type="file" required class="form-control" name="images[]" id="" multiple>
-                        </div>
+                        <input type="number" required name="price" class="form-control" placeholder="Enter Price"/>
                     </div>
                     <div>
                         <label>
-                        <span>Tags </span><i>(Seperate between tags with "," )</i>
+                        <span>tags</span><i>(separate with ',')</i>
                         </label>
-                        <textarea name="tags" class="form-control" placeholder="Enter Tags And Seperate between tags with ','" cols="30" rows="8" style="height: auto></textarea>
+                        <div>
+                            <input type="number" name="oprice" class="form-control" placeholder="Enter Offer Price"/>
+                        </div>
                     </div>
                 </div>
                 <div class="modal-footer">

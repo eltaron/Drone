@@ -11,7 +11,9 @@ class ArticlesController extends Controller
 {
     public function index()
     {
-        $articles = Article::where('user_id', Auth::user()->id)->get();
-        return view('trader.articles.index', ['articles' => $articles]);
+        if (Auth::user()->type == 'trader') {
+            $articles = Article::where('user_id', Auth::user()->id)->get();
+            return view('trader.articles.index', ['articles' => $articles]);
+        }
     }
 }
