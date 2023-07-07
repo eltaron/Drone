@@ -41,7 +41,7 @@ Route::group(['middleware' => 'Lang'], function () {
             Route::get('orders', 'DashboardController@index');
             Route::get('wallets', 'DashboardController@index');
             Route::get('followers', 'DashboardController@index');
-            Route::get('carts', 'DashboardController@index');
+            Route::get('carts', 'CartController@index');
             Route::get('wishlist', 'DashboardController@index');
             Route::group(['prefix' => 'articles'], function () {
                 Route::get('', 'DashboardController@index');
