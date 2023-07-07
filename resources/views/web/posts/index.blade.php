@@ -15,6 +15,7 @@
         </div>
     </div>
     <div class="container">
+        <button class="addPost"> + </button>
         <div class="row">
         <div class="col-12">
             <div class="item">
