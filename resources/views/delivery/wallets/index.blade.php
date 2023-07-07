@@ -1,4 +1,4 @@
-@extends('trader.layouts.app')
+@extends('delivery.layouts.app')
 @push('styles')
 @endpush
 @section('content')

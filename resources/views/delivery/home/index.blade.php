@@ -1,4 +1,4 @@
-@extends('trader.layouts.app')
+@extends('delivery.layouts.app')
 @push('styles')
 @endpush
 @section('content')
@@ -7,21 +7,15 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-4">
-                    <div class="card ">
-                        <div class="card-header ">
-                            <h4 class="card-title">Product Statistics</h4>
-                        </div>
-                        <div class="card-body ">
-                            <div id="chartPreferences" class="ct-chart ct-perfect-fourth"></div>
-                            <div class="legend">
-                                <i class="fa fa-circle text-info"></i> Products
-                                <i class="fa fa-circle text-danger"></i> Offers
-                                <i class="fa fa-circle text-warning"></i> Special Products
-                                <input type="hidden" id="products" value="{{$products_count}}">
-                                <input type="hidden" id="offers" value="{{$offers_count}}">
-                                <input type="hidden" id="specialists" value="{{$specialist_count}}">
-                            </div>
-                        </div>
+                    <div class="counter-box colored">
+                        <i class="fa fa-user"></i>
+                        <span class="counter">{{$ordersCount}}</span>
+                        <p>Orders Count</p>
+                    </div>
+                    <div class="counter-box">
+                        <i class="fa fa-exchange"></i>
+                        <span class="counter">{{$wallet}}</span>
+                        <p>Total Money</p>
                     </div>
                 </div>
                 <div class="col-md-8">
@@ -120,36 +114,6 @@
                                 </tbody>
                             </table>
                         </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="four col-md-3">
-                    <div class="counter-box colored">
-                        <i class="fa fa-user"></i>
-                        <span class="counter">{{$ordersCount}}</span>
-                        <p>Orders Count</p>
-                    </div>
-                </div>
-                <div class="four col-md-3">
-                    <div class="counter-box">
-                        <i class="fa fa-shopping-cart"></i>
-                        <span class="counter">{{$products_count}}</span>
-                        <p>Products Count</p>
-                    </div>
-                </div>
-                <div class="four col-md-3">
-                    <div class="counter-box colored">
-                        <i class="fa  fa-shopping-bag"></i>
-                        <span class="counter">{{$offers_count}}</span>
-                        <p>Offers Count</p>
-                    </div>
-                </div>
-                <div class="four col-md-3">
-                    <div class="counter-box">
-                        <i class="fa fa-exchange"></i>
-                        <span class="counter">{{$wallet}}</span>
-                        <p>Total Money</p>
                     </div>
                 </div>
             </div>

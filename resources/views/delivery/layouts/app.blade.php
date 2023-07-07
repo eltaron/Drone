@@ -1,8 +1,6 @@
-@include('trader.includes.head')
-@if (Auth::user()->store->store_name != Auth::user()->name)
-    @include('trader.includes.navbar')
-@endif
-@include('trader.includes.header')
-@include('trader.includes.messages')
+@include('delivery.includes.head')
+@include('delivery.includes.navbar')
+@include('delivery.includes.header')
+@include('delivery.includes.messages')
 @yield('content')
-@include('trader.includes.footer')
+@include('delivery.includes.footer')

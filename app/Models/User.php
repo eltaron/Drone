@@ -53,6 +53,11 @@ class User extends Authenticatable
         return $this->hasOne('App\Models\Shop', 'user_id');
     }
 
+    public function delivery()
+    {
+        return $this->hasOne('App\Models\Delivery', 'user_id');
+    }
+
     public function articles()
     {
         return $this->hasMany('App\Models\Article', 'user_id');

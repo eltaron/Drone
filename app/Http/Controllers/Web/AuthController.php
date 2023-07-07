@@ -74,6 +74,7 @@ class AuthController extends Controller
             $delviry->delivery_name =  $user->name;
             $delviry->user_id  =  $user->id;
             $delviry->delivery_Code =  $this->generateCodeNumber('delivery');
+            $delviry->save();
             return redirect(durl(''))->with('success', 'Register Successful');
         } else {
             return redirect(url('account'))->with('success', 'Register Successful');

@@ -16,24 +16,24 @@ class HomeController extends Controller
     public function index()
     {
         if (Auth::user()->type == 'delivery') {
-            $ordersCount = Order::whereHas('products', function ($query) {
-                $query->wherehas('product', function ($q) {
-                    $q->where('shop_id', Auth::user()->store->id);
+            $ordersCount = Order::whereHas('delivery', function ($query) {
+                $query->wherehas('delivery', function ($q) {
+                    $q->where('user_id', Auth::user()->id);
                 });
             })->count();
             $orders = Order::with('user')
-                ->whereHas('products', function ($query) {
-                    $query->wherehas('product', function ($q) {
-                        $q->where('shop_id', Auth::user()->store->id);
+                ->whereHas('delivery', function ($query) {
+                    $query->wherehas('delivery', function ($q) {
+                        $q->where('user_id', Auth::user()->id);
                     });
                 })
                 ->where('status', 'preparation')
                 ->withCount('products')
                 ->latest()
                 ->paginate(7);
-            $ordersChart = Order::whereHas('products', function ($query) {
-                $query->wherehas('product', function ($q) {
-                    $q->where('shop_id', Auth::user()->store->id);
+            $ordersChart = Order::whereHas('delivery', function ($query) {
+                $query->wherehas('delivery', function ($q) {
+                    $q->where('user_id', Auth::user()->id);
                 });
             })->get()
                 ->groupBy(function ($date) {
@@ -58,19 +58,14 @@ class HomeController extends Controller
                 $wallet_main = 0;
             }
             $wallets = Wallet::where('user_id', Auth::user()->id)->latest()->paginate(7);
-            $offers = Product::whereHas('offer')->with('offer', 'image')->where('shop_id', Auth::user()->store->id)->latest()->paginate(7);
             return view('delivery.home.index', [
                 'ordersCount' => $ordersCount,
-                'products_count' => Product::where('shop_id', Auth::user()->store->id)->count(),
-                'offers_count' => Product::whereHas('offer')->where('shop_id', Auth::user()->store->id)->count(),
-                'specialist_count' => Product::whereHas('specialist')->where('shop_id', Auth::user()->store->id)->count(),
                 'followers_count' => Follow::where('model_id', Auth::user()->id)->where('model', 'User')->count(),
                 'orders' => $orders,
                 'wallet' => $wallet_main,
                 'wallets' => $wallets,
                 'ordermcount' => $ordermcount,
                 'orderArr' => $orderArr,
-                'offers' => $offers,
             ]);
         }
     }

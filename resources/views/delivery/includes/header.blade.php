@@ -8,41 +8,8 @@
             <span class="navbar-toggler-bar burger-lines"></span>
         </button>
         <div class="container-fluid">
-            <div class="collapse navbar-collapse justify-content-end" id="navigation">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{surl('')}}">
-                            <span class="no-icon">My shop</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{url('logout')}}">
-                            <span class="no-icon">Log out</span>
-                        </a>
-                    </li>
-                </ul>
-                <ul class="nav navbar-nav mr-5 pr-5">
-                    <li class="nav-item">
-                        <a href="#" class="nav-link">
-                            <i class="nc-icon nc-zoom-split"></i>
-                            <span class="d-lg-block">&nbsp;Search</span>
-                        </a>
-                    </li>
-                    <li class="dropdown nav-item">
-                        <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
-                            <i class="nc-icon nc-planet"></i>
-                            <span class="notification">5</span>
-                            <span class="d-lg-none">Notification</span>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <a class="dropdown-item" href="#">Notification 1</a>
-                            <a class="dropdown-item" href="#">Notification 2</a>
-                            <a class="dropdown-item" href="#">Notification 3</a>
-                            <a class="dropdown-item" href="#">Notification 4</a>
-                            <a class="dropdown-item" href="#">Another notification</a>
-                        </ul>
-                    </li>
-                </ul>
+            <div class="collapse navbar-collapse justify-content-center text-center" id="navigation">
+                <h2 class="card-title">Delivery Dashboard</h2>
             </div>
         </div>
     </nav>

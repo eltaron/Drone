@@ -8,15 +8,9 @@
             </div>
             <ul class="nav">
                 <li class="nav-item {{ Request::is('/') ? 'active' : '' }}">
-                    <a class="nav-link" href="{{url('trader/')}}">
+                    <a class="nav-link" href="{{url('delivery/')}}">
                         <i class="nc-icon nc-chart-pie-35"></i>
                         <p>Home</p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link {{ Request::is('trader/articles') ? 'active' : '' }}" href="{{url('trader/articles')}}">
-                        <i class="nc-icon nc-paper-2"></i>
-                        <p>Articles</p>
                     </a>
                 </li>
                 <li class="nav-item">
@@ -26,45 +20,33 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{url('trader/followers')}}">
+                    <a class="nav-link" href="{{url('delivery/followers')}}">
                         <i class="nc-icon nc-favourite-28"></i>
                         <p>Followers</p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{url('trader/products')}}">
-                        <i class="nc-icon nc-grid-45"></i>
-                        <p>Products</p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{url('trader/offers')}}">
-                        <i class="nc-icon nc-grid-45"></i>
-                        <p>Offers</p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{url('trader/specialist')}}">
-                        <i class="nc-icon nc-grid-45"></i>
-                        <p>Specialists</p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{url('trader/orders')}}">
+                    <a class="nav-link" href="{{url('delivery/orders')}}">
                         <i class="nc-icon nc-delivery-fast"></i>
                         <p>Orders</p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{url('trader/wallets')}}">
+                    <a class="nav-link" href="{{url('delivery/wallets')}}">
                         <i class="nc-icon nc-credit-card"></i>
                         <p>Wallets</p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{url('trader/profile')}}">
+                    <a class="nav-link" href="{{url('delivery/profile')}}">
                         <i class="nc-icon nc-badge"></i>
                         <p>Edit Profile</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{url('logout')}}">
+                        <i class="nc-icon nc-button-power"></i>
+                        <p>Logout</p>
                     </a>
                 </li>
             </ul>

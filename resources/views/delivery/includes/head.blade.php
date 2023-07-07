@@ -13,13 +13,6 @@
     <link href="{{asset('admin_files')}}/css/bootstrap.min.css" rel="stylesheet" />
     <link href="{{asset('admin_files')}}/css/dashboard.css" rel="stylesheet" />
     {{-- <link href="{{asset('admin_files')}}/css/demo.css" rel="stylesheet" /> --}}
-    @if (Auth::user()->store->store_name == Auth::user()->name)
-        <style>
-            .main-panel{
-                width:100% !important
-            }
-        </style>
-    @endif
     @stack('styles')
 </head>
 

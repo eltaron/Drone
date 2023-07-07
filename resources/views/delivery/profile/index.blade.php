@@ -1,4 +1,4 @@
-@extends('trader.layouts.app')
+@extends('delivery.layouts.app')
 @push('styles')
 @endpush
 @section('content')
@@ -8,25 +8,25 @@
             <div class="col-md-8">
                 <div class="card">
                     <div class="card-body">
-                        <form method="POST" action="{{turl('profile')}}" enctype="multipart/form-data">
+                        <form method="POST" action="{{durl('profile')}}" enctype="multipart/form-data">
                             @csrf
                             <div class="row">
                                 <div class="col-md-12 text-center">
-                                    <h2 class="card-title font-weight-bold">Store Details</h2>
+                                    <h2 class="card-title font-weight-bold">Delivery Details</h2>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label>Store Name</label>
-                                        <input type="text" class="form-control" name="store_name" placeholder="Store Name" value="{{Auth::user()->store->store_name !=Auth::user()->name ? Auth::user()->store->store_name : '' }}" required>
+                                        <label>Delivery Name</label>
+                                        <input type="text" class="form-control" name="delivery_name" placeholder="delivery Name" value="{{Auth::user()->delivery->delivery_name }}" required>
                                     </div>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="input-group mb-3" style="flex-wrap: wrap;">
-                                        <label class="w-100">Store Logo</label>
+                                        <label class="w-100">Delivery Logo</label>
                                         <input type="file" name="logo" class="form-control w-100">
                                     </div>
                                 </div>
@@ -34,8 +34,8 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label>Store Address</label>
-                                        <textarea class="form-control" name="address" placeholder="Store Address" rows="5" style="height: auto">{{Auth::user()->store->address}}</textarea>
+                                        <label>Delivery Address</label>
+                                        <textarea class="form-control" name="address" placeholder="delivery Address" rows="5" style="height: auto">{{Auth::user()->delivery->address}}</textarea>
                                     </div>
                                 </div>
                             </div>
@@ -43,7 +43,7 @@
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label>Google Map Location</label>
-                                        <textarea class="form-control" name="google" placeholder="Google Map Location" rows="5" style="height: auto">{{Auth::user()->store->google}}</textarea>
+                                        <textarea class="form-control" name="google" placeholder="Google Map Location" rows="5" style="height: auto">{{Auth::user()->delivery->google}}</textarea>
                                     </div>
                                 </div>
                             </div>
@@ -51,19 +51,19 @@
                                 <div class="col-md-4 pr-md-1">
                                     <div class="form-group">
                                         <label>Facebook</label>
-                                        <input type="text" name="facebook" class="form-control" placeholder="Company" value="{{Auth::user()->store->facebook}}">
+                                        <input type="text" name="facebook" class="form-control" placeholder="Company" value="{{Auth::user()->delivery->facebook}}">
                                     </div>
                                 </div>
                                 <div class="col-md-4 pr-md-1 pl-md-1">
                                     <div class="form-group">
                                         <label>Twitter</label>
-                                        <input type="text" name="twitter" class="form-control" placeholder="Last Name" value="{{Auth::user()->store->twitter}}">
+                                        <input type="text" name="twitter" class="form-control" placeholder="Twitter" value="{{Auth::user()->delivery->twitter}}">
                                     </div>
                                 </div>
                                 <div class="col-md-4 pl-md-1">
                                     <div class="form-group">
                                         <label>Instagram</label>
-                                        <input type="text" name="instagram" class="form-control" placeholder="Last Name" value="{{Auth::user()->store->instagram}}">
+                                        <input type="text" name="instagram" class="form-control" placeholder="Instagram" value="{{Auth::user()->delivery->instagram}}">
                                     </div>
                                 </div>
                             </div>
@@ -136,22 +136,22 @@
                     <div class="card-body">
                         <div class="author">
                             <a href="#">
-                                <img class="avatar border-gray" src="{{Auth::user()->store->logo ? Auth::user()->store->logo : asset('admin_files/img/default-avatar.png')}}" alt="...">
-                                <h5 class="title">{{Auth::user()->store->store_name}}</h5>
+                                <img class="avatar border-gray" src="{{Auth::user()->delivery->logo ? Auth::user()->delivery->logo : asset('admin_files/img/default-avatar.png')}}" alt="...">
+                                <h5 class="title">{{Auth::user()->delivery->delivery_name}}</h5>
                             </a>
-                            <p class="description">{{Auth::user()->store->store_Code}}</p>
+                            <p class="description">{{Auth::user()->delivery->delivery_Code}}</p>
                         </div>
                         <p class="description text-center">{{Auth::user()->about}}</p>
                     </div>
                     <hr>
                     <div class="button-container mr-auto ml-auto">
-                        <button href="{{Auth::user()->store->facebook}}" class="btn btn-simple btn-link btn-icon">
+                        <button href="{{Auth::user()->delivery->facebook}}" class="btn btn-simple btn-link btn-icon">
                             <i class="fa fa-facebook-square"></i>
                         </button>
-                        <button href="{{Auth::user()->store->twitter}}" class="btn btn-simple btn-link btn-icon">
+                        <button href="{{Auth::user()->delivery->twitter}}" class="btn btn-simple btn-link btn-icon">
                             <i class="fa fa-twitter"></i>
                         </button>
-                        <button href="{{Auth::user()->store->instagram}}" class="btn btn-simple btn-link btn-icon">
+                        <button href="{{Auth::user()->delivery->instagram}}" class="btn btn-simple btn-link btn-icon">
                             <i class="fa fa-instagram"></i>
                         </button>
                     </div>

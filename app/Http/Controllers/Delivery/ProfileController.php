@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Delivery;
 
 use App\Http\Controllers\Controller;
+use App\Models\Delivery;
 use App\Models\Shop;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -20,7 +21,7 @@ class ProfileController extends Controller
     {
         if (Auth::user()->type == 'delivery') {
             $validate = $request->validate([
-                'store_name'    => 'required',
+                'delivery_name' => 'required',
                 'logo'          => 'nullable',
                 'address'       => 'nullable',
                 'google'        => 'nullable',
@@ -41,9 +42,8 @@ class ProfileController extends Controller
                 $user->city_id  = $request->city;
             }
             $user->about    = $request->about;
-            $store = Shop::where('user_id', Auth::user()->id)->first();
-            $store->store_name = $request->store_name;
-
+            $store = Delivery::where('user_id', Auth::user()->id)->first();
+            $store->delivery_name = $request->delivery_name;
             $file = $request->file('logo');
             if ($file) {
                 $fileNameWithExtension = $file->getClientOriginalName();
@@ -51,9 +51,9 @@ class ProfileController extends Controller
                 $extension = $file->getClientOriginalExtension();
                 $imageName = $fileName . '_' . time() . '.' . $extension;
                 $mainpath = date("Y-m-d") . '/';
-                $path = $file->move(public_path('storage/stores/' . $mainpath), $imageName);
-                $store->logo = url('') . '/storage/stores/' . $mainpath . $imageName;
-                $user->profileLogo = url('') . '/storage/stores/' . $mainpath . $imageName;
+                $path = $file->move(public_path('storage/deliveries/' . $mainpath), $imageName);
+                $store->logo = url('') . '/storage/deliveries/' . $mainpath . $imageName;
+                $user->profileLogo = url('') . '/storage/deliveries/' . $mainpath . $imageName;
             }
             $store->address = $request->address;
             $store->google = $request->google;

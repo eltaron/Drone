@@ -12,9 +12,9 @@ class OrdersController extends Controller
     public function index()
     {
         if (Auth::user()->type == 'delivery') {
-            $orders = Order::whereHas('products', function ($query) {
-                $query->wherehas('product', function ($q) {
-                    $q->where('shop_id', Auth::user()->store->id);
+            $orders = Order::whereHas('delivery', function ($query) {
+                $query->wherehas('delivery', function ($q) {
+                    $q->where('user_id', Auth::user()->id);
                 });
             })
                 ->withCount('products')

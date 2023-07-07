@@ -39,6 +39,11 @@ class Order extends Model
         return $this->hasMany('App\Models\OrderProduct', 'order_id');
     }
 
+    public function delivery()
+    {
+        return $this->hasOne('App\Models\DeliveryOrder', 'order_id');
+    }
+
     public function user()
     {
         return $this->belongsTo('App\Models\User', 'user_id');
