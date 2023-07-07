@@ -35,7 +35,7 @@ class Article extends Model
 
     public function image()
     {
-        return $this->hasOne('App\Models\Image', 'article_id');
+        return $this->hasOne('App\Models\Image', 'model_id');
     }
 
 

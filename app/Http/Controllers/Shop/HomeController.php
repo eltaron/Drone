@@ -15,10 +15,12 @@ class HomeController extends Controller
         if ($store) {
             $specials = Product::inRandomOrder()->whereHas('specialist')->where('shop_id', $store->id)->latest()->paginate(4);
             $offers = Product::inRandomOrder()->whereHas('offer')->where('shop_id', $store->id)->latest()->paginate(4);
+            $products = Product::inRandomOrder()->where('shop_id', $store->id)->latest()->paginate(8);
             return view('shop.home.index', [
                 'store' => $store,
                 'specials' => $specials,
                 'offers' => $offers,
+                'products' => $products
             ]);
         } else {
             return view('errors.404');

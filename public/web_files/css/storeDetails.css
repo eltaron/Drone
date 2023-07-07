@@ -134,7 +134,7 @@ hr{
 }
 
 img {
-  height: auto;
+  /* height: auto; */
   max-width: 100%;
   vertical-align: middle;
 }
@@ -188,7 +188,7 @@ img {
   .carousel .cards_item {
     width: 25%;
   }
-} 
+}
 @media (min-width: 1200px) {
   .cards_item {
     width: 25%;
@@ -264,6 +264,8 @@ img {
   background-color: var(--sec-color);
   opacity: 0.6;
 }
+
+
 
 /* Footer */
 

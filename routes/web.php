@@ -27,9 +27,25 @@ Route::group(['middleware' => 'Lang'], function () {
         Route::post('login', 'AuthController@login');
         Route::get('logout', 'AuthController@logout');
         Route::get('articles', 'ArticlesController@index');
+        Route::get('stores', 'StoreController@index');
         Route::get('articleDetails/{id}', 'ArticlesController@show');
         Route::get('posts', 'PostsController@index');
+        Route::get('faqs', 'HomeController@faqs');
+        Route::get('error404', 'HomeController@error');
         Route::get('allProducts', 'ProductsController@all');
         Route::post('cities', 'AuthController@cities');
+        Route::post('contact', 'HomeController@contact');
+        Route::group(['prefix' => 'user'], function () {
+            Route::get('profile', 'UserController@index');
+            Route::get('orders', 'OrdersController@index');
+            Route::get('wallets', 'WalletsController@index');
+            Route::get('followers', 'FollowersController@index');
+            Route::get('carts', 'WalletsController@index');
+            Route::get('wishlist', 'WalletsController@index');
+            Route::get('Reports', 'WalletsController@index');
+            Route::group(['prefix' => 'articles'], function () {
+                Route::get('', 'ArticlesController@index');
+            });
+        });
     });
 });

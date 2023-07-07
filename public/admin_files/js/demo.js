@@ -166,7 +166,9 @@ demo = {
     },
 
     initDashboardPageCharts: function() {
-
+        var p = document.getElementById('products').value ;
+        var o = document.getElementById('offers').value ;
+        var s = document.getElementById('specialists').value ;
         var dataPreferences = {
             series: [
                 [25, 30, 20, 25]
@@ -187,8 +189,8 @@ demo = {
         Chartist.Pie('#chartPreferences', dataPreferences, optionsPreferences);
 
         Chartist.Pie('#chartPreferences', {
-            labels: ['53%', '36%', '11%'],
-            series: [53, 36, 11]
+            labels: [p, o, s],
+            series: [p, o, s]
         });
 
 
@@ -255,8 +257,7 @@ demo = {
         var data = {
             labels: ['Jan', 'Feb', 'Mar', 'Apr', 'Mai', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
             series: [
-                [542, 443, 320, 780, 553, 453, 326, 434, 568, 610, 756, 895],
-                [412, 243, 280, 580, 453, 353, 300, 364, 368, 410, 636, 695]
+                [m1.value, m2.value, m3.value, m4.value, m5.value, m6.value, m7.value, m8.value, m9.value, m10.value, m11.value, m12.value]
             ]
         };
 

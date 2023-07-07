@@ -5,7 +5,7 @@
         <a href=""><img src="{{asset('web_files')}}/images/logow.png" class="logo" alt="logo" /></a>
     </div>
     <div class="col-4">
-        <h1 class="title">{{}}</h1>
+        <h1 class="title">{{$title ? $title : ''}}</h1>
     </div>
     <div class="menu-wrap col-4" dir="rtl">
         <svg

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Image;
 use App\Models\Offer;
 use App\Models\Product;
+use App\Models\Specialist;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -14,8 +15,38 @@ class ProductsController extends Controller
     public function index()
     {
         if (Auth::user()->type == 'trader') {
-            $products = Product::where('shop_id', Auth::user()->store->id)->orderby('id', 'desc')->get();
-            return view('trader.products.index', ['products' => $products]);
+            $products = Product::where('shop_id', Auth::user()->store->id)->orderby('id', 'desc')->latest()->get();
+            return view('trader.products.index', [
+                'products' => $products,
+                'title' => 'Products',
+                'offers' => Product::where('shop_id', Auth::user()->store->id)->doesntHave('offer')->orderby('id', 'desc')->latest()->get(),
+                'specialists' => Product::where('shop_id', Auth::user()->store->id)->doesntHave('specialist')->orderby('id', 'desc')->latest()->get()
+            ]);
+        }
+    }
+    public function offers()
+    {
+        if (Auth::user()->type == 'trader') {
+            $products = Product::where('shop_id', Auth::user()->store->id)->wherehas('offer')->orderby('id', 'desc')->latest()->get();
+            return view('trader.products.index', [
+                'products' => $products,
+                'title' => 'Offers',
+                'offers' => Product::where('shop_id', Auth::user()->store->id)->doesntHave('offer')->orderby('id', 'desc')->latest()->get(),
+                'specialists' => Product::where('shop_id', Auth::user()->store->id)->doesntHave('specialist')->orderby('id', 'desc')->latest()->get()
+
+            ]);
+        }
+    }
+    public function specialist()
+    {
+        if (Auth::user()->type == 'trader') {
+            $products = Product::where('shop_id', Auth::user()->store->id)->wherehas('specialist')->orderby('id', 'desc')->latest()->get();
+            return view('trader.products.index', [
+                'products' => $products,
+                'title' => 'Special Products',
+                'offers' => Product::where('shop_id', Auth::user()->store->id)->doesntHave('offer')->orderby('id', 'desc')->latest()->get(),
+                'specialists' => Product::where('shop_id', Auth::user()->store->id)->doesntHave('specialist')->orderby('id', 'desc')->latest()->get()
+            ]);
         }
     }
     public function store(Request $request)
@@ -63,6 +94,36 @@ class ProductsController extends Controller
                 $offer->end_at      = $request->odate;
                 $offer->save();
             }
+            return back()->with('success', 'Added successfully');
+        }
+    }
+    public function storeoffer(Request $request)
+    {
+        if (Auth::user()->type == 'trader') {
+            $validator = $request->validate([
+                'product_id'  => 'required',
+                'oprice'      => 'required',
+                'odate'       => 'required',
+            ]);
+            $offer = new Offer();
+            $offer->product_id  = $request->product_id;
+            $offer->price       = $request->oprice;
+            $offer->end_at      = $request->odate;
+            $offer->save();
+            return back()->with('success', 'Added successfully');
+        }
+    }
+    public function storespecial(Request $request)
+    {
+        if (Auth::user()->type == 'trader') {
+            $validator = $request->validate([
+                'product_id'  => 'required',
+                'odate'       => 'required',
+            ]);
+            $specialist = new Specialist();
+            $specialist->product_id  = $request->product_id;
+            $specialist->end_at      = $request->odate;
+            $specialist->save();
             return back()->with('success', 'Added successfully');
         }
     }
@@ -121,6 +182,28 @@ class ProductsController extends Controller
                 'product_id'       => 'required',
             ]);
             $product = Product::find($request->product_id);
+            $product->delete();
+            return back()->with('success', 'Deleted successfulky');
+        }
+    }
+    public function destroyoffer(Request $request)
+    {
+        if (Auth::user()->type == 'trader') {
+            $validator = $request->validate([
+                'product_id'       => 'required',
+            ]);
+            $product = Offer::find($request->product_id);
+            $product->delete();
+            return back()->with('success', 'Deleted successfulky');
+        }
+    }
+    public function destroyspecial(Request $request)
+    {
+        if (Auth::user()->type == 'trader') {
+            $validator = $request->validate([
+                'product_id'       => 'required',
+            ]);
+            $product = Specialist::find($request->product_id);
             $product->delete();
             return back()->with('success', 'Deleted successfulky');
         }

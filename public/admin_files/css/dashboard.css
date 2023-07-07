@@ -203,7 +203,7 @@ h1 .subtitle {
 
 body,
 .wrapper {
-    min-height: 100vh;
+    /* min-height: 100vh; */
     position: relative;
 }
 
@@ -316,11 +316,11 @@ input:focus {
     z-index: 2;
 }
 
-.documentation .page-header,
+/* .documentation .page-header,
 .documentation .page-header-image,
 .documentation .page-header-image .filter:after {
     height: 100vh;
-}
+} */
 
 .documentation .footer {
     z-index: 3;
@@ -341,7 +341,7 @@ body>.navbar-collapse {
     top: 0;
     bottom: 0;
     left: 0;
-    max-height: 100vh;
+    /* max-height: 100vh; */
     width: 260px;
     display: block;
     z-index: 1;
@@ -359,7 +359,7 @@ body>.navbar-collapse .sidebar-wrapper {
     /* overflow: hidden; */
     width: 260px;
     z-index: 4;
-    padding-bottom: 85px;
+    /* padding-bottom: 85px; */
 }
 
 .sidebar .sidebar-background,
@@ -424,9 +424,10 @@ body>.navbar-collapse .logo-tim img {
 
 .sidebar .nav,
 body>.navbar-collapse .nav {
-    margin-top: 20px;
+    /* margin-top: 20px; */
     float: none;
     display: block;
+    padding-bottom: 0;
 }
 
 .sidebar .nav li .nav-link,
@@ -4242,7 +4243,7 @@ Copyright (c) 2015 Daniel Eden
         position: relative;
         z-index: 4;
         overflow-y: scroll;
-        height: calc(100vh - 61px);
+        /* height: calc(100vh - 61px); */
         width: 100%;
     }
     body>.navbar-collapse::before {
@@ -5665,7 +5666,7 @@ License - nucleoapp.com/license/
     }
 
     .postcard .postcard__img {
-        max-width: 300px;
+        min-width: 300px;
         max-height: 100%;
         transition: transform 0.3s ease;
     }

@@ -41,7 +41,6 @@ class ProfileController extends Controller
                 $user->city_id  = $request->city;
             }
             $user->about    = $request->about;
-            $user->save();
             $store = Shop::where('user_id', Auth::user()->id)->first();
             $store->store_name = $request->store_name;
 
@@ -54,6 +53,7 @@ class ProfileController extends Controller
                 $mainpath = date("Y-m-d") . '/';
                 $path = $file->move(public_path('storage/stores/' . $mainpath), $imageName);
                 $store->logo = url('') . '/storage/stores/' . $mainpath . $imageName;
+                $user->profileLogo = url('') . '/storage/stores/' . $mainpath . $imageName;
             }
             $store->address = $request->address;
             $store->google = $request->google;
@@ -61,6 +61,7 @@ class ProfileController extends Controller
             $store->twitter = $request->twitter;
             $store->instagram = $request->instagram;
             $store->save();
+            $user->save();
             return back()->with('success', 'profile updated successful');
         }
     }

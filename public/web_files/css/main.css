@@ -10,7 +10,7 @@
 
 @font-face {
     font-family: "college";
-    src: url('../webfonts/college.ttf') format("truetype");
+    src: url("http://localhost/CurrentWorkLaravel/Drone//webfonts/college.ttf") format("truetype");
 }
 
 * {
@@ -121,7 +121,7 @@ li{
     justify-items: flex-end;
     flex-direction: row;
     padding-left: 20%;
-} 
+}
 
 .menu-wrap .ham {
     height: 70px;
@@ -176,6 +176,12 @@ li{
     -moz-transition: opacity 500ms ease;
     -ms-transition: opacity 500ms ease;
     -o-transition: opacity 500ms ease;
+}
+
+.menu-wrap .ham.active {
+    .line {
+        stroke: var(--sec-color);
+    }
 }
 
 .menu-wrap .ham.active~.menu {
@@ -264,4 +270,15 @@ li{
 
 .back p:hover {
     scale: 1.01;
+}
+
+
+
+.notFound {
+    background-color: var(--main-color);
+    color: var(--sec-color);
+}
+
+.notFound>p {
+    font-size: 1.5rem;
 }

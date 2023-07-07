@@ -9,133 +9,114 @@
                 <div class="col-md-4">
                     <div class="card ">
                         <div class="card-header ">
-                            <h4 class="card-title">Email Statistics</h4>
-                            <p class="card-category">Last Campaign Performance</p>
+                            <h4 class="card-title">Product Statistics</h4>
                         </div>
                         <div class="card-body ">
                             <div id="chartPreferences" class="ct-chart ct-perfect-fourth"></div>
                             <div class="legend">
-                                <i class="fa fa-circle text-info"></i> Open
-                                <i class="fa fa-circle text-danger"></i> Bounce
-                                <i class="fa fa-circle text-warning"></i> Unsubscribe
-                            </div>
-                            <hr>
-                            <div class="stats">
-                                <i class="fa fa-clock-o"></i> Campaign sent 2 days ago
+                                <i class="fa fa-circle text-info"></i> Products
+                                <i class="fa fa-circle text-danger"></i> Offers
+                                <i class="fa fa-circle text-warning"></i> Special Products
+                                <input type="hidden" id="products" value="{{$products_count}}">
+                                <input type="hidden" id="offers" value="{{$offers_count}}">
+                                <input type="hidden" id="specialists" value="{{$specialist_count}}">
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-8">
                     <div class="card ">
+                        <input type="hidden" id="m1" value="{{$orderArr[1]}}">
+                        <input type="hidden" id="m2" value="{{$orderArr[2]}}">
+                        <input type="hidden" id="m3" value="{{$orderArr[3]}}">
+                        <input type="hidden" id="m4" value="{{$orderArr[4]}}">
+                        <input type="hidden" id="m5" value="{{$orderArr[5]}}">
+                        <input type="hidden" id="m6" value="{{$orderArr[6]}}">
+                        <input type="hidden" id="m7" value="{{$orderArr[7]}}">
+                        <input type="hidden" id="m8" value="{{$orderArr[8]}}">
+                        <input type="hidden" id="m9" value="{{$orderArr[9]}}">
+                        <input type="hidden" id="m10" value="{{$orderArr[10]}}">
+                        <input type="hidden" id="m11" value="{{$orderArr[11]}}">
+                        <input type="hidden" id="m12" value="{{$orderArr[12]}}">
                         <div class="card-header ">
-                            <h4 class="card-title">Users Behavior</h4>
-                            <p class="card-category">24 Hours performance</p>
+                            <h4 class="card-title">Orders</h4>
+                            <p class="card-category">All Orders</p>
                         </div>
                         <div class="card-body ">
-                            <div id="chartHours" class="ct-chart"></div>
-                        </div>
-                        <div class="card-footer ">
-                            <div class="legend">
-                                <i class="fa fa-circle text-info"></i> Open
-                                <i class="fa fa-circle text-danger"></i> Click
-                                <i class="fa fa-circle text-warning"></i> Click Second Time
-                            </div>
-                            <hr>
-                            <div class="stats">
-                                <i class="fa fa-history"></i> Updated 3 minutes ago
-                            </div>
+                            <div id="chartActivity" class="ct-chart"></div>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-6">
-                    <div class="card ">
+                    <div class="card strpied-tabled-with-hover">
                         <div class="card-header ">
-                            <h4 class="card-title">2023 Sales</h4>
-                            <p class="card-category">All products including Taxes</p>
+                            <h4 class="card-title">Wallet</h4>
+                            <p class="card-category">latest transactions</p>
                         </div>
-                        <div class="card-body ">
-                            <div id="chartActivity" class="ct-chart"></div>
-                        </div>
-                        <div class="card-footer ">
-                            <div class="legend">
-                                <i class="fa fa-circle text-info"></i> Tesla Model S
-                                <i class="fa fa-circle text-danger"></i> BMW 5 Series
-                            </div>
-                            <hr>
-                            <div class="stats">
-                                <i class="fa fa-check"></i> Data information certified
-                            </div>
+                        <div class="card-body table-full-width table-responsive">
+                            <table class="table table-hover table-striped">
+                                <thead>
+                                    <th>ID</th>
+                                    <th>Balance</th>
+                                    <th>Description</th>
+                                    <th>Date</th>
+                                </thead>
+                                <tbody>
+                                    @forelse ($wallets as $wallet)
+                                        <tr>
+                                            <td>{{$wallet->id}}</td>
+                                            <td>{{$wallet->balance}}</td>
+                                            <td>{{$wallet->description_en}}</td>
+                                            <td>{{$wallet->time_ago}}</td>
+                                        </tr>
+                                    @empty
+                                        <tr>
+                                            <td>No data</td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
+                                    @endforelse
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="card strpied-tabled-with-hover">
                         <div class="card-header ">
-                            <h4 class="card-title">Striped Table with Hover</h4>
-                            <p class="card-category">Here is a subtitle for this table</p>
+                            <h4 class="card-title">Orders</h4>
+                            <p class="card-category">Latest orders</p>
                         </div>
                         <div class="card-body table-full-width table-responsive">
                             <table class="table table-hover table-striped">
                                 <thead>
                                     <th>ID</th>
                                     <th>Name</th>
-                                    <th>Salary</th>
-                                    <th>Country</th>
-                                    <th>City</th>
+                                    <th>Status</th>
+                                    <th>Code</th>
+                                    <th>Date</th>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>Dakota Rice</td>
-                                        <td>$36,738</td>
-                                        <td>Niger</td>
-                                        <td>Oud-Turnhout</td>
-                                    </tr>
-                                    <tr>
-                                        <td>2</td>
-                                        <td>Minerva Hooper</td>
-                                        <td>$23,789</td>
-                                        <td>Curaçao</td>
-                                        <td>Sinaai-Waas</td>
-                                    </tr>
-                                    <tr>
-                                        <td>3</td>
-                                        <td>Sage Rodriguez</td>
-                                        <td>$56,142</td>
-                                        <td>Netherlands</td>
-                                        <td>Baileux</td>
-                                    </tr>
-                                    <tr>
-                                        <td>4</td>
-                                        <td>Philip Chaney</td>
-                                        <td>$38,735</td>
-                                        <td>Korea, South</td>
-                                        <td>Overland Park</td>
-                                    </tr>
-                                    <tr>
-                                        <td>5</td>
-                                        <td>Doris Greene</td>
-                                        <td>$63,542</td>
-                                        <td>Malawi</td>
-                                        <td>Feldkirchen in Kärnten</td>
-                                    </tr>
-                                    <tr>
-                                        <td>6</td>
-                                        <td>Mason Porter</td>
-                                        <td>$78,615</td>
-                                        <td>Chile</td>
-                                        <td>Gloucester</td>
-                                    </tr>
-                                    <tr>
-                                        <td>7</td>
-                                        <td>Mason Porter</td>
-                                        <td>$78,615</td>
-                                        <td>Chile</td>
-                                        <td>Gloucester</td>
-                                    </tr>
+                                    @forelse ($orders as $order)
+                                        <tr>
+                                            <td>{{$order->id}}</td>
+                                            <td>{{ $order->user->name  }}</td>
+                                            <td>{{ $order->status }}</td>
+                                            <td>{{ $order->code }}</td>
+                                            <td>{{ $order->time_ago }}</td>
+                                        </tr>
+                                    @empty
+                                        <tr>
+                                            <td>No data</td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
+                                    @endforelse
                                 </tbody>
                             </table>
                         </div>
@@ -146,29 +127,29 @@
                 <div class="four col-md-3">
                     <div class="counter-box colored">
                         <i class="fa fa-user"></i>
-                        <span class="counter">2147</span>
-                        <p>Happy Members</p>
+                        <span class="counter">{{$ordersCount}}</span>
+                        <p>Orders Count</p>
                     </div>
                 </div>
                 <div class="four col-md-3">
                     <div class="counter-box">
                         <i class="fa fa-shopping-cart"></i>
-                        <span class="counter">3275</span>
-                        <p>Registered Stores</p>
+                        <span class="counter">{{$products_count}}</span>
+                        <p>Products Count</p>
                     </div>
                 </div>
                 <div class="four col-md-3">
                     <div class="counter-box colored">
                         <i class="fa  fa-shopping-bag"></i>
-                        <span class="counter">289</span>
-                        <p>Available Products</p>
+                        <span class="counter">{{$offers_count}}</span>
+                        <p>Offers Count</p>
                     </div>
                 </div>
                 <div class="four col-md-3">
                     <div class="counter-box">
                         <i class="fa fa-exchange"></i>
-                        <span class="counter">1563</span>
-                        <p>Current Orders</p>
+                        <span class="counter">{{$wallet}}</span>
+                        <p>Total Money</p>
                     </div>
                 </div>
             </div>

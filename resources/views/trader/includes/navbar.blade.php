@@ -38,15 +38,9 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{url('trader/offers')}}">
+                    <a class="nav-link" href="{{url('trader/specialist')}}">
                         <i class="nc-icon nc-grid-45"></i>
                         <p>Specialists</p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{url('trader/wallets')}}">
-                        <i class="nc-icon nc-credit-card"></i>
-                        <p>Returneds</p>
                     </a>
                 </li>
                 <li class="nav-item">
@@ -65,12 +59,6 @@
                     <a class="nav-link" href="{{url('trader/profile')}}">
                         <i class="nc-icon nc-badge"></i>
                         <p>Edit Profile</p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{url('trader/wallets')}}">
-                        <i class="nc-icon nc-credit-card"></i>
-                        <p>Complaints</p>
                     </a>
                 </li>
             </ul>

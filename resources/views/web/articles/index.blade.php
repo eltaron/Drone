@@ -6,115 +6,29 @@
 <main>
     <div class="articles mt-5" id="articles">
     <div class="container">
+        @forelse ($articles as $article)
         <div class="box">
-        <img src="{{asset('web_files')}}/images/1.jpg" alt="" />
-        <div class="content">
-            <h2><i class="bult"></i> Test Title</h2>
-            <p>
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-            Reprehenderit
-            </p>
+            <img src="{{asset('web_files')}}/images/1.jpg" alt="" />
+            <div class="content">
+                <a href="{{url('articleDetails/'.$article->id)}}">
+                    <h2><i class="bult"></i> {{$article->title}}</h2>
+                    <p>{{ \Illuminate\Support\Str::limit($article->description, 150, $end='...') }} </p>
+                </a>
+            </div>
+            <div class="info">
+                <label class="control-label"
+                ><i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i
+                ></label>
+            </div>
         </div>
-        <div class="info">
-            <label class="control-label"
-            ><i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i
-            ></label>
+        @empty
+        <div class="notFound col-12 text-center pt-3" style="width: 90vw">
+            <p>No Articles Found</p>
         </div>
-        </div>
-        <div class="box">
-        <img src="{{asset('web_files')}}/images/1.jpg" alt="" />
-        <div class="content">
-            <h2><i class="bult"></i> Test Title</h2>
-            <p>
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-            Reprehenderit Lorem ipsum dolor sit amet consectetur,
-            adipisicing elit. Reprehenderit
-            </p>
-        </div>
-        <div class="info">
-            <label class="control-label">
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star iconwhite"></i>
-            </label>
-        </div>
-        </div>
-        <div class="box">
-        <img src="{{asset('web_files')}}/images/1.jpg" alt="" />
-        <div class="content">
-            <h2><i class="bult"></i> Test Title</h2>
-            <p>
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-            Reprehenderit
-            </p>
-        </div>
-        <div class="info">
-            <label class="control-label"
-            ><i class="fa-sharp fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star iconwhite"></i
-            ></label>
-        </div>
-        </div>
-        <div class="box">
-        <img src="{{asset('web_files')}}/images/1.jpg" alt="" />
-        <div class="content">
-            <h2><i class="bult"></i> Test Title</h2>
-            <p>
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-            Reprehenderit
-            </p>
-        </div>
-        <div class="info">
-            <label class="control-label"
-            ><i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star iconwhite"></i
-            ></label>
-        </div>
-        </div>
-        <div class="box">
-        <img src="{{asset('web_files')}}/images/1.jpg" alt="" />
-        <div class="content">
-            <h2><i class="bult"></i> Test Title</h2>
-            <p>
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-            Reprehenderit
-            </p>
-        </div>
-        <div class="info">
-            <label class="control-label"
-            ><i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star iconwhite"></i
-            ></label>
-        </div>
-        </div>
-        <div class="box">
-        <img src="{{asset('web_files')}}/images/1.jpg" alt="" />
-        <div class="content">
-            <h2><i class="bult"></i> Test Title</h2>
-            <p>
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-            Reprehenderit
-            </p>
-        </div>
-        <div class="info">
-            <label class="control-label"
-            ><i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star iconwhite"></i
-            ></label>
-        </div>
-        </div>
+        @endforelse
     </div>
     </div>
 </main>
