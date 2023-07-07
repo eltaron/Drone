@@ -36,15 +36,15 @@ Route::group(['middleware' => 'Lang'], function () {
         Route::post('cities', 'AuthController@cities');
         Route::post('contact', 'HomeController@contact');
         Route::group(['prefix' => 'user'], function () {
-            Route::get('profile', 'UserController@index');
-            Route::get('orders', 'OrdersController@index');
-            Route::get('wallets', 'WalletsController@index');
-            Route::get('followers', 'FollowersController@index');
-            Route::get('carts', 'WalletsController@index');
-            Route::get('wishlist', 'WalletsController@index');
-            Route::get('Reports', 'WalletsController@index');
+            Route::get('', 'DashboardController@index');
+            Route::get('profile', 'DashboardController@index');
+            Route::get('orders', 'DashboardController@index');
+            Route::get('wallets', 'DashboardController@index');
+            Route::get('followers', 'DashboardController@index');
+            Route::get('carts', 'DashboardController@index');
+            Route::get('wishlist', 'DashboardController@index');
             Route::group(['prefix' => 'articles'], function () {
-                Route::get('', 'ArticlesController@index');
+                Route::get('', 'DashboardController@index');
             });
         });
     });
