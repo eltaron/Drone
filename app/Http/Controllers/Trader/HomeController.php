@@ -27,7 +27,7 @@ class HomeController extends Controller
                         $q->where('shop_id', Auth::user()->store->id);
                     });
                 })
-                ->where('status', 'pending')
+                ->where('status', 'preparation')
                 ->withCount('products')
                 ->latest()
                 ->paginate(7);

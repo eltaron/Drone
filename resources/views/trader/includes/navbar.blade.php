@@ -20,6 +20,12 @@
                     </a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link {{ Request::is('posts') ? 'active' : '' }}" href="{{url('posts')}}">
+                        <i class="nc-icon nc-paper-2"></i>
+                        <p>Posts</p>
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" href="{{url('trader/followers')}}">
                         <i class="nc-icon nc-favourite-28"></i>
                         <p>Followers</p>

@@ -19,7 +19,11 @@ Route::group(['middleware' => 'Lang'], function () {
             });
             Route::get('offers', 'ProductsController@offers');
             Route::get('specialist', 'ProductsController@specialist');
-            Route::get('orders', 'OrdersController@index');
+            Route::group(['prefix' => 'orders'], function () {
+                Route::get('', 'OrdersController@index');
+                Route::post('status', 'OrdersController@status');
+                Route::post('destroy', 'OrdersController@destroy');
+            });
             Route::get('wallets', 'WalletsController@index');
             Route::get('followers', 'FollowersController@index');
             Route::group(['prefix' => 'articles'], function () {

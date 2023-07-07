@@ -10,10 +10,6 @@
                     <div class="card-header ">
                         <div class="row d-flex align-items-center justify-content-between">
                             <h4 class="card-title font-weight-bold ml-3">All Orders</h4>
-                            <div class="justify-content-end">
-                                <a href="#" class="btn btn-primary btn-fill mx-3">Add Order</a>
-                                <a href="#" class="btn btn-warning btn-fill mr-3">Remove Order</a>
-                            </div>
                         </div>
                     </div>
                     <div class="card-body table-full-width table-responsive">
@@ -21,60 +17,34 @@
                             <thead>
                                 <th>ID</th>
                                 <th>Name</th>
-                                <th>Price</th>
-                                <th>Product</th>
-                                <th>Quantity</th>
-                                <th>Address</th>
+                                <th>Status</th>
+                                <th>Code</th>
+                                <th>Date</th>
+                                <th>Action</th>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Dakota Rice</td>
-                                    <td>$36,738</td>
-                                    <td>Niger</td>
-                                    <td>1</td>
-                                    <td>Oud-Turnhout</td>
-                                </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td>Minerva Hooper</td>
-                                    <td>$23,789</td>
-                                    <td>Curaçao</td>
-                                    <td>2</td>
-                                    <td>Sinaai-Waas</td>
-                                </tr>
-                                <tr>
-                                    <td>3</td>
-                                    <td>Sage Rodriguez</td>
-                                    <td>$56,142</td>
-                                    <td>Netherlands</td>
-                                    <td>20</td>
-                                    <td>Baileux</td>
-                                </tr>
-                                <tr>
-                                    <td>4</td>
-                                    <td>Philip Chaney</td>
-                                    <td>$38,735</td>
-                                    <td>Korea, South</td>
-                                    <td>11</td>
-                                    <td>Overland Park</td>
-                                </tr>
-                                <tr>
-                                    <td>5</td>
-                                    <td>Doris Greene</td>
-                                    <td>$63,542</td>
-                                    <td>Malawi</td>
-                                    <td>5</td>
-                                    <td>Feldkirchen in Kärnten</td>
-                                </tr>
-                                <tr>
-                                    <td>6</td>
-                                    <td>Mason Porter</td>
-                                    <td>$78,615</td>
-                                    <td>Chile</td>
-                                    <td>21</td>
-                                    <td>Gloucester</td>
-                                </tr>
+                                @forelse ($orders as $order)
+                                    <tr>
+                                        <td>{{$order->id}}</td>
+                                        <td>{{ $order->user->name  }}</td>
+                                        <td>{{ $order->status }}</td>
+                                        <td>{{ $order->code }}</td>
+                                        <td>{{ $order->time_ago }}</td>
+                                        <td>
+                                            <a href="#" data-id="{{$order->id}}" class="btn btn-dark mr-2 delete_order">Remove Order</a>
+                                            <a href="#" data-id="{{$order->id}}" class="btn btn-dark mr-2 change_status">Change Status</a>
+                                        </td>
+                                    </tr>
+                                @empty
+                                    <tr>
+                                        <td>No data</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                @endforelse
                             </tbody>
                         </table>
                     </div>
@@ -83,5 +53,75 @@
         </div>
     </div>
 </div>
+<div class="modal fade" id="delete_order" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Delete Order</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form action="{{turl('orders/destroy')}}" method="POST" enctype="multipart/form-data">
+                <div class="modal-body">
+                    @csrf
+                    <input type="hidden" name="order_id" id="order_id">
+                    <h2>Are you shure you want to delete this order ?</h2>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-warning">Delete Order</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="change_status" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Choose Status</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form action="{{turl('orders/status')}}" method="POST" enctype="multipart/form-data">
+                <div class="modal-body">
+                    @csrf
+                    <input type="hidden" name="order_id" id="order_id2">
+                    <h2>Choose Status</h2>
+                    <div class="form-group">
+                        <select id="inputState" name="status" class="form-control" required>
+                            <option selected disabled>Choose Status</option>
+                            <option value="preparation">preparation</option>
+                            <option value="in_route">in route</option>
+                            <option value="completed">completed</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-success">Choose Status</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+@push('scripts')
+<script>
+    $(document).ready(function() {
+        $(".delete_order").click(function() {
+            var id = $(this).attr('data-id');
+            $("#order_id").val(id);
+            $("#delete_order").modal('toggle');
+        });
+        $(".change_status").click(function() {
+            var id = $(this).attr('data-id');
+            $("#order_id2").val(id);
+            $("#change_status").modal('toggle');
+        });
+    });
+</script>
+@endpush
 @endsection
 
