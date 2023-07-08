@@ -1,0 +1,6 @@
+@include('delivery.includes.head')
+@include('delivery.includes.navbar2')
+@include('delivery.includes.header2')
+@include('delivery.includes.messages')
+@yield('content')
+@include('delivery.includes.footer')

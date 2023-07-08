@@ -30,6 +30,7 @@ Route::group(['middleware' => 'Lang'], function () {
         Route::get('stores', 'StoreController@index');
         Route::get('articleDetails/{id}', 'ArticlesController@show');
         Route::get('posts', 'PostsController@index');
+        Route::post('posts/store', 'PostsController@store');
         Route::get('faqs', 'HomeController@faqs');
         Route::get('error404', 'HomeController@error');
         Route::get('allProducts', 'ProductsController@all');
@@ -37,14 +38,15 @@ Route::group(['middleware' => 'Lang'], function () {
         Route::post('contact', 'HomeController@contact');
         Route::group(['prefix' => 'user'], function () {
             Route::get('', 'DashboardController@index');
-            Route::get('profile', 'DashboardController@index');
-            Route::get('orders', 'DashboardController@index');
-            Route::get('wallets', 'DashboardController@index');
-            Route::get('followers', 'DashboardController@index');
+            Route::get('profile', 'DashboardController@profile');
+            Route::post('profile', 'DashboardController@update');
+            Route::get('orders', 'DashboardController@orders');
+            Route::get('wallets', 'DashboardController@wallets');
+            Route::get('followers', 'DashboardController@followers');
             Route::get('carts', 'CartController@index');
             Route::get('wishlist', 'DashboardController@index');
             Route::group(['prefix' => 'articles'], function () {
-                Route::get('', 'DashboardController@index');
+                Route::get('', 'DashboardController@articles');
             });
         });
     });

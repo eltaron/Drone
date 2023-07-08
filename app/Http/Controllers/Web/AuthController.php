@@ -77,7 +77,7 @@ class AuthController extends Controller
             $delviry->save();
             return redirect(durl(''))->with('success', 'Register Successful');
         } else {
-            return redirect(url('account'))->with('success', 'Register Successful');
+            return redirect(url('user'))->with('success', 'Register Successful');
         }
     }
     public function login(Request $request)
@@ -96,7 +96,7 @@ class AuthController extends Controller
                 } else if ($user->type == 'delivery') {
                     return redirect(durl(''))->with('success', 'login Successful');
                 } else {
-                    return redirect(url('account'))->with('success', 'login Successful');
+                    return redirect(url('user'))->with('success', 'login Successful');
                 }
             }
         } else {

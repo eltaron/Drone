@@ -132,7 +132,7 @@ img {
   -webkit-box-shadow: 3px 3px 3px -1px #3d565660;
   -moz-box-shadow: 3px 3px 3px -1px #3d565660;
   border: 2px solid var(--sec-color);
-  height: 300px;
+  /* height: 300px; */
 }
 
 

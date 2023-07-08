@@ -38,7 +38,11 @@ class Post extends Model
     }
     public function comments()
     {
-        return $this->hasMany('App\Models\Comment')->where('status', 1);
+        return $this->hasMany('App\Models\Comment', 'model_id');
+    }
+    public function likes()
+    {
+        return $this->hasMany('App\Models\Like', 'model_id');
     }
     public function image()
     {

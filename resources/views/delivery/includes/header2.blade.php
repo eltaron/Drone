@@ -9,7 +9,7 @@
         </button>
         <div class="container-fluid">
             <div class="collapse navbar-collapse justify-content-center text-center" id="navigation">
-                <h2 class="card-title">Vendor Dashboard</h2>
+                <h2 class="card-title">User Dashboard</h2>
             </div>
         </div>
     </nav>

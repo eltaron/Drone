@@ -54,7 +54,7 @@
     </div>
   </div>
 </div>
-
+{{--
 <section class="mt-5">
   <div class="container">
     <div class="row col-12 d-flex justify-content-between">
@@ -166,8 +166,8 @@
       </ul>
     </div>
   </div>
-</section>
-<section class="mt-5">
+</section> --}}
+{{-- <section class="mt-5">
   <div class="container">
     <h3 class="col-6 sub-head text-start">HIGHLY RATED STORES</h3>
     <div
@@ -457,217 +457,44 @@
       </button>
     </div>
   </div>
-</section>
+</section> --}}
 <section class="mt-5 mb-5">
   <div class="container">
     <div class="row col-12 d-flex justify-content-between">
       <h3 class="col-6 sub-head text-start">STORES</h3>
-      <a href="" class="text-end col-6">
+      {{-- <a href="" class="text-end col-6">
         <h5 class="showAll text-decoration-underline">All STORES</h5>
-      </a>
+      </a> --}}
     </div>
     <div class="main">
       <ul class="cards">
+        @foreach ($stores as $store)
         <li class="cards_item">
-          <div class="card">
-            <div class="card_image"><img src="{{asset('web_files')}}/images/logoc.png" /></div>
-            <div class="card_content">
-              <div class="row d-flex flex-row justify-content-between">
-                <h2 class="card_title">AE ADV.</h2>
-              </div>
-              <div class="row d-flex flex-row justify-content-between">
-                <p class="card_text">ADVERTISING AGENCY</p>
-              </div>
-              <div class="row">
-                <span class="w-50 fs-6 pe-2 prate">
-                  <i class="fa-sharp fa-solid fa-star"></i> 4.7
-                </span>
-                <button
-                  onclick="window.location.href='#cart'"
-                  ;
-                  class="w-50 btn card_btn ali"
-                >
-                  SHOP NOW
-                </button>
+            <div class="card">
+              <div class="card_image"><img src="{{$store->logo}}" width="100%"/></div>
+              <div class="card_content">
+                <div class="row d-flex flex-row justify-content-between">
+                  <h2 class="card_title">{{$store->store_name}}</h2>
+                </div>
+                <div class="row d-flex flex-row justify-content-between">
+                  <p class="card_text">{{$store->address}}</p>
+                </div>
+                <div class="row">
+                  <span class="w-50 fs-6 pe-2 prate">
+                    <i class="fa-sharp fa-solid fa-star"></i> 4.7
+                  </span>
+                  <button
+                    onclick="window.location.href='{{url('shop/'.$store->store_name)}}'"
+                    ;
+                    class="w-50 btn card_btn ali"
+                  >
+                    SHOP NOW
+                  </button>
+                </div>
               </div>
             </div>
-          </div>
-        </li>
-        <li class="cards_item">
-          <div class="card">
-            <div class="card_image"><img src="{{asset('web_files')}}/images/logoc.png" /></div>
-            <div class="card_content">
-              <div class="row d-flex flex-row justify-content-between">
-                <h2 class="card_title">AE ADV.</h2>
-              </div>
-              <div class="row d-flex flex-row justify-content-between">
-                <p class="card_text">ADVERTISING AGENCY</p>
-              </div>
-              <div class="row">
-                <span class="w-50 fs-6 pe-2 prate">
-                  <i class="fa-sharp fa-solid fa-star"></i> 4.7
-                </span>
-                <button
-                  onclick="window.location.href='#cart'"
-                  ;
-                  class="w-50 btn card_btn ali"
-                >
-                  SHOP NOW
-                </button>
-              </div>
-            </div>
-          </div>
-        </li>
-        <li class="cards_item">
-          <div class="card">
-            <div class="card_image"><img src="{{asset('web_files')}}/images/logoc.png" /></div>
-            <div class="card_content">
-              <div class="row d-flex flex-row justify-content-between">
-                <h2 class="card_title">AE ADV.</h2>
-              </div>
-              <div class="row d-flex flex-row justify-content-between">
-                <p class="card_text">ADVERTISING AGENCY</p>
-              </div>
-              <div class="row">
-                <span class="w-50 fs-6 pe-2 prate">
-                  <i class="fa-sharp fa-solid fa-star"></i> 4.7
-                </span>
-                <button
-                  onclick="window.location.href='#cart'"
-                  ;
-                  class="w-50 btn card_btn ali"
-                >
-                  SHOP NOW
-                </button>
-              </div>
-            </div>
-          </div>
-        </li>
-        <li class="cards_item">
-          <div class="card">
-            <div class="card_image"><img src="{{asset('web_files')}}/images/logoc.png" /></div>
-            <div class="card_content">
-              <div class="row d-flex flex-row justify-content-between">
-                <h2 class="card_title">AE ADV.</h2>
-              </div>
-              <div class="row d-flex flex-row justify-content-between">
-                <p class="card_text">ADVERTISING AGENCY</p>
-              </div>
-              <div class="row">
-                <span class="w-50 fs-6 pe-2 prate">
-                  <i class="fa-sharp fa-solid fa-star"></i> 4.7
-                </span>
-                <button
-                  onclick="window.location.href='#cart'"
-                  ;
-                  class="w-50 btn card_btn ali"
-                >
-                  SHOP NOW
-                </button>
-              </div>
-            </div>
-          </div>
-        </li>
-        <li class="cards_item">
-          <div class="card">
-            <div class="card_image"><img src="{{asset('web_files')}}/images/logoc.png" /></div>
-            <div class="card_content">
-              <div class="row d-flex flex-row justify-content-between">
-                <h2 class="card_title">AE ADV.</h2>
-              </div>
-              <div class="row d-flex flex-row justify-content-between">
-                <p class="card_text">ADVERTISING AGENCY</p>
-              </div>
-              <div class="row">
-                <span class="w-50 fs-6 pe-2 prate">
-                  <i class="fa-sharp fa-solid fa-star"></i> 4.7
-                </span>
-                <button
-                  onclick="window.location.href='#cart'"
-                  ;
-                  class="w-50 btn card_btn ali"
-                >
-                  SHOP NOW
-                </button>
-              </div>
-            </div>
-          </div>
-        </li>
-        <li class="cards_item">
-          <div class="card">
-            <div class="card_image"><img src="{{asset('web_files')}}/images/logoc.png" /></div>
-            <div class="card_content">
-              <div class="row d-flex flex-row justify-content-between">
-                <h2 class="card_title">AE ADV.</h2>
-              </div>
-              <div class="row d-flex flex-row justify-content-between">
-                <p class="card_text">ADVERTISING AGENCY</p>
-              </div>
-              <div class="row">
-                <span class="w-50 fs-6 pe-2 prate">
-                  <i class="fa-sharp fa-solid fa-star"></i> 4.7
-                </span>
-                <button
-                  onclick="window.location.href='#cart'"
-                  ;
-                  class="w-50 btn card_btn ali"
-                >
-                  SHOP NOW
-                </button>
-              </div>
-            </div>
-          </div>
-        </li>
-        <li class="cards_item">
-          <div class="card">
-            <div class="card_image"><img src="{{asset('web_files')}}/images/logoc.png" /></div>
-            <div class="card_content">
-              <div class="row d-flex flex-row justify-content-between">
-                <h2 class="card_title">AE ADV.</h2>
-              </div>
-              <div class="row d-flex flex-row justify-content-between">
-                <p class="card_text">ADVERTISING AGENCY</p>
-              </div>
-              <div class="row">
-                <span class="w-50 fs-6 pe-2 prate">
-                  <i class="fa-sharp fa-solid fa-star"></i> 4.7
-                </span>
-                <button
-                  onclick="window.location.href='#cart'"
-                  ;
-                  class="w-50 btn card_btn ali"
-                >
-                  SHOP NOW
-                </button>
-              </div>
-            </div>
-          </div>
-        </li>
-        <li class="cards_item">
-          <div class="card">
-            <div class="card_image"><img src="{{asset('web_files')}}/images/logoc.png" /></div>
-            <div class="card_content">
-              <div class="row d-flex flex-row justify-content-between">
-                <h2 class="card_title">AE ADV.</h2>
-              </div>
-              <div class="row d-flex flex-row justify-content-between">
-                <p class="card_text">ADVERTISING AGENCY</p>
-              </div>
-              <div class="row">
-                <span class="w-50 fs-6 pe-2 prate">
-                  <i class="fa-sharp fa-solid fa-star"></i> 4.7
-                </span>
-                <button
-                  onclick="window.location.href='#cart'"
-                  ;
-                  class="w-50 btn card_btn ali"
-                >
-                  SHOP NOW
-                </button>
-              </div>
-            </div>
-          </div>
-        </li>
+          </li>
+        @endforeach
       </ul>
     </div>
   </div>

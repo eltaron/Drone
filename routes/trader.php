@@ -36,6 +36,11 @@ Route::group(['middleware' => 'Lang'], function () {
             Route::get('profile', 'ProfileController@index');
             Route::post('profile', 'ProfileController@update');
             Route::get('settings', 'SettingsController@index');
+            Route::group(['prefix' => 'payment'], function () {
+                Route::post('', 'WalletsController@payment');
+                Route::post('callback', 'WalletsController@callback');
+                Route::post('error', 'WalletsController@error');
+            });
         });
     });
 });
