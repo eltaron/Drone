@@ -49,5 +49,7 @@ Route::group(['middleware' => 'Lang'], function () {
                 Route::get('', 'DashboardController@articles');
             });
         });
+        Route::post('addtowishlist', 'HomeController@addtowishlist');
+        Route::post('addtocart', 'HomeController@addtocart');
     });
 });

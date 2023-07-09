@@ -47,7 +47,7 @@
       <div class="row col-12 d-flex justify-content-between">
         <h3 class="col-6 sub-head text-start">Special Products</h3>
         @if (count($specials) > 0)
-            <a href="#allOffers" class="text-end col-6">
+            <a href="{{surl(storeNameData()->store->store_name.'/products/all')}}" class="text-end col-6">
                     <h5 class="showAll text-decoration-underline">Show All</h5>
             </a>
         @endif
@@ -67,10 +67,10 @@
                             <p class="card_text col-12">{{$special->description}}</p>
                         </div>
                         <div class=" row mt-2 d-md-flex justify-content-center">
-                            <button class="btn card_btn col-md-3 me-1" style="background-color: var(--sec-color);" onclick="wishlist(this)">
+                            <button class="btn card_btn col-md-3 me-1" style="background-color: var(--sec-color);" onclick="wishlist(this,{{$special->id}})">
                                 <span><i class="fa-sharp fa-solid fa-heart "></i></span>
                             </button>
-                            <button class="btn card_btn col-md-8" onclick="cart(this)">
+                            <button class="btn card_btn col-md-8" onclick="cart(this,{{$special->id}})">
                                 <span><i class="fa-solid fa-cart-shopping"></i></span> Add To Cart
                             </button>
                         </div>
@@ -91,7 +91,7 @@
       <div class="row col-12 d-flex justify-content-between">
         <h3 class="col-6 sub-head text-start">Offers</h3>
         @if (count($offers) > 0)
-            <a href="{{surl('products/offers')}}" class="text-end col-6">
+            <a href="{{surl(storeNameData()->store->store_name.'/products/offers')}}" class="text-end col-6">
                     <h5 class="showAll text-decoration-underline">Show All</h5>
             </a>
         @endif
@@ -112,10 +112,10 @@
                             <p class="card_text col-md-4 p-0 text-decoration-line-through text-end">{{ $offer->price}} {{currentCurrency()}}</p>
                         </div>
                         <div class=" row mt-2 d-md-flex justify-content-center">
-                            <button class="btn wishh card_btn col-md-3 me-1"   onclick="wishlist(this)" style="background-color: var(--sec-color);">
+                            <button class="btn wishh card_btn col-md-3 me-1"   onclick="wishlist(this,{{$offer->id}})" style="background-color: var(--sec-color);">
                                 <span><i class="fa-sharp fa-solid fa-heart "></i></span>
                             </button>
-                            <button class="btn Addcart card_btn col-md-8" onclick="cart(this)">
+                            <button class="btn Addcart card_btn col-md-8" onclick="cart(this,{{$offer->id}})">
                                 <span><i class="fa-solid fa-cart-shopping"></i></span> Add To Cart
                             </button>
                         </div>
@@ -137,7 +137,7 @@
       <div class="row col-12 d-flex justify-content-between">
         <h3 class="col-6 sub-head text-start">Products</h3>
         @if (count($products) > 0)
-            <a href="#allOffers" class="text-end col-6">
+            <a href="{{surl(storeNameData()->store->store_name.'/products/all')}}" class="text-end col-6">
                 <h5 class="showAll text-decoration-underline">Show All</h5>
             </a>
         @endif
@@ -157,11 +157,11 @@
                         <p class="card_text col-8 ps-0 d-none d-md-block">{{$offer->description}}</p>
                         </div>
                         <div class=" row mt-2 d-md-flex justify-content-center">
-                        <button onclick="wishlist(this)" class="btn card_btn col-md-3 me-1"
+                        <button onclick="wishlist(this,{{$product->id}})" class="btn card_btn col-md-3 me-1"
                             style="background-color: var(--sec-color);">
                             <span><i class="fa-sharp fa-solid fa-heart "></i></span>
                         </button>
-                        <button onclick="cart(this)"  class="btn card_btn col-md-8">
+                        <button onclick="cart(this,{{$product->id}})"  class="btn card_btn col-md-8">
                             <span><i class="fa-solid fa-cart-shopping"></i></span> Add To Cart
                         </button>
                         </div>
@@ -178,6 +178,50 @@
     </div>
   </section>
 @push('scripts')
-<script src="{{asset('web_files')}}/js/storeDetails.js"></script>
+<script src="{{asset('web_files')}}/js/jquery.js"></script>
+<script>
+    function wishlist(x,id) {
+    $.ajax({
+        type: 'POST',
+        url: "{{ url('/addtowishlist') }}",
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        },
+        data: {
+                _token: "{{ csrf_token() }}",
+                'id': id,
+            },
+        success: function(msg) {
+            x.firstChild.nextSibling.firstChild.style.color = "#3D5656";
+            x.style.backgroundColor = "#68B984";
+        },
+        error: function(data) {
+            alert("some Error");
+        }
+    });
+
+}
+
+function cart(y,id) {
+    $.ajax({
+        type: 'POST',
+        url: "{{ url('/addtocart') }}",
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        },
+        data: {
+                _token: "{{ csrf_token() }}",
+                'id': id,
+            },
+        success: function(msg) {
+            y.innerHTML = '<span><i class="fa-solid fa-cart-shopping"></i></span> Added To Cart';
+        },
+        error: function(data) {
+            alert("some Error");
+        }
+    });
+
+}
+</script>
 @endpush
 @endsection
